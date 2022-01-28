@@ -7,6 +7,7 @@ import Top from "./Top";
 import styled from "styled-components";
 import LOGO from "../assets/LOGO.png";
 import USER_AVATAR from "../assets/UserAccountProfile1.png";
+import Navigation from "../components/Navigation";
 const HackerNewsApp = () => {
   const { pathname } = useLocation();
   return (
@@ -23,13 +24,7 @@ const HackerNewsApp = () => {
         {pathname === "/show" && <Show />}
       </section>
       <footer>
-        <nav>
-          <Link to="article">Article</Link>
-          <Link to="ask">Ask</Link>
-          <Link to="/">Home</Link>
-          <Link to="show">Show</Link>
-          <Link to="jobs">Jobs</Link>
-        </nav>
+        <Navigation />
       </footer>
     </StyledHackerNewsApp>
   );

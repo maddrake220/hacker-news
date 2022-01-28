@@ -4,6 +4,7 @@ import TIME_ICON from "../assets/Main1stTimeIcon.png";
 import COMMENT_ICON from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
 import { SCORE_MAX_VALUE } from "../utils/constants";
+import ScoreBar from "./ScoreBar";
 
 const TodayTop = ({ story, ranking }) => {
   const {
@@ -12,19 +13,21 @@ const TodayTop = ({ story, ranking }) => {
   const diffTime = substract(time);
 
   return (
-    <StyledDateTop>
+    <StyledDateTop dir="ltr">
       <div className="date-top-url">
         <span>{url.slice(0, 35)}...</span>
       </div>
       <div className="ranking">
         <span className="cannot-dragging">{ranking}</span>
       </div>
-      <div className="date-top-title">
-        <p>
-          {title.slice(0, 75)}
-          {title.length > 75 && <span>...</span>}
-        </p>
-      </div>
+      <a href={url} target="_blank" rel="noreferrer">
+        <div className="date-top-title">
+          <p>
+            {title.slice(0, 75)}
+            {title.length > 75 && <span>...</span>}
+          </p>
+        </div>
+      </a>
       <div className="date-top-info">
         <div>
           <img src={USER_ICON} alt="user"></img>
@@ -39,16 +42,7 @@ const TodayTop = ({ story, ranking }) => {
           <span>{descendants}</span>
         </div>
       </div>
-      <div className="date-top-progress">
-        <div className="progress-icon">
-          <span className="cannot-dragging">P</span>
-        </div>
-        <div className="progress">
-          <span>
-            {score > Number(SCORE_MAX_VALUE) ? `${SCORE_MAX_VALUE}+` : score}
-          </span>
-        </div>
-      </div>
+      <ScoreBar score={score} />
     </StyledDateTop>
   );
 };
@@ -63,6 +57,8 @@ const StyledDateTop = styled.article`
   backdrop-filter: blur(4px);
   border-radius: 20px;
   position: relative;
+  margin-right: 20px;
+  cursor: pointer;
   > .date-top-url {
     margin: 8px 20px 0 24px;
     padding: 8px 0;
@@ -93,7 +89,7 @@ const StyledDateTop = styled.article`
       justify-content: center;
     }
   }
-  > .date-top-title {
+  .date-top-title {
     position: absolute;
     top: 90px;
     left: 24px;
@@ -127,51 +123,6 @@ const StyledDateTop = styled.article`
       align-items: center;
       > * {
         margin-right: 6px;
-      }
-    }
-  }
-  > .date-top-progress {
-    position: absolute;
-    width: 310px;
-    height: 27px;
-    bottom: 22px;
-    margin-left: 24px;
-    font-style: "Pretendard Variable";
-    display: flex;
-    align-items: center;
-    > .progress-icon {
-      background-color: #ff6666;
-      width: 16.67px;
-      height: 15px;
-      border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: black;
-      > span {
-        font-weight: 600;
-        font-size: 10px;
-        line-height: 12px;
-      }
-    }
-    > .progress {
-      position: relative;
-      height: 12px;
-      width: 100%;
-      margin-left: 6.67px;
-      background: linear-gradient(
-        90deg,
-        #ff9696 0%,
-        #ff0303 66.28%,
-        #ff4949 129.85%
-      );
-      border-radius: 20px;
-      > span {
-        display: flex;
-        justify-content: center;
-        font-weight: 400;
-        font-size: 10px;
-        line-height: 12px;
       }
     }
   }
