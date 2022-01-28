@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getStories } from "../utils/apis";
-import { TypeTop } from "../utils/constants";
+import { TYPETOP } from "../utils/constants";
 
 // export const useDataFetcherItem = (storyId) => {
 //   const [story, setStory] = useState(null);
@@ -19,6 +19,7 @@ import { TypeTop } from "../utils/constants";
 //   return { isLoading, story };
 // };
 const sortStories = (stories) => {
+  console.log(stories);
   return stories.sort((a, b) => {
     return b.data.score - a.data.score;
   });
@@ -31,7 +32,7 @@ export const useDataFetcher = (type) => {
     setIsLoading(true);
     getStories(type)
       .then((stories) => {
-        if (type === TypeTop) stories = sortStories(stories);
+        if (type === TYPETOP) stories = sortStories(stories);
         setStories(stories);
         setIsLoading(false);
       })

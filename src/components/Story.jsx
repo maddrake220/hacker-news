@@ -1,9 +1,12 @@
 import styled from "styled-components";
 const Story = ({ story }) => {
+  const {
+    data: { title, score },
+  } = story;
   return (
     <StyledStory>
-      <div>{story.data.title}</div>
-      <div>{story.data.score}</div>
+      <div>{title}</div>
+      <div>{score}</div>
     </StyledStory>
   );
 };

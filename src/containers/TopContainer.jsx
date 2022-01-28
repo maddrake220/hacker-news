@@ -1,12 +1,16 @@
 import Story from "../components/Story";
-import TodayTop from "../components/TodayTop";
+import DateTop from "../components/DateTop";
 import { useDataFetcher } from "../hooks/useDataFetcher";
-import { TypeTop } from "../utils/constants";
+import { TYPETOP } from "../utils/constants";
 import styled from "styled-components";
+import Search from "../components/Search";
+import DateTopDay from "../components/DateTopDay";
 const TopContainer = () => {
-  const { isLoading, stories } = useDataFetcher(TypeTop);
+  const { isLoading, stories } = useDataFetcher(TYPETOP);
   return (
     <StyledTopContainer>
+      <Search />
+      <DateTopDay />
       {isLoading ? (
         <p className="loading">Loading...</p>
       ) : (
@@ -14,9 +18,9 @@ const TopContainer = () => {
           {stories.map((story, index) => (
             <>
               {index === 0 ? (
-                <TodayTop />
+                <DateTop key={index} story={story} ranking={index + 1} />
               ) : (
-                <Story key={story.id} story={story} />
+                <Story key={index} story={story} ranking={index + 1} />
               )}
             </>
           ))}
