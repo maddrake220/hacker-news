@@ -38,13 +38,7 @@ const getStory = async (id) => {
 export const getStories = async (type) => {
   try {
     const { data: storyIds } = await axios.get(
-      `${BASE_API_URL}/${type}stories.json`,
-      {
-        params: {
-          limitToFirst: "30",
-          orderBy: `"$key"`,
-        },
-      }
+      `${BASE_API_URL}/${type}stories.json`
     );
     const stories = await Promise.all(storyIds.map(getStory));
     return stories;

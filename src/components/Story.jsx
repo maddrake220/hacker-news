@@ -3,7 +3,7 @@ import ScoreBar from "./ScoreBar";
 import CommentIcon from "../assets/Main1stCommentIcon.png";
 const Story = ({ story, ranking }) => {
   const {
-    data: { title, url, descendants },
+    data: { title, score, url, descendants },
   } = story;
   return (
     <StyledStory href={url}>
@@ -11,12 +11,12 @@ const Story = ({ story, ranking }) => {
         <div className="story-title">
           <span>{ranking}</span>
           <p>
-            {title.slice(0, 75)}
-            {title.length > 75 && <>...</>}
+            {title.slice(0, 68)}
+            {title.length > 68 && <>...</>}
           </p>
         </div>
       </a>
-      <ScoreBar barType="story-bar" />
+      <ScoreBar score={score} barType="story-bar" />
       <div className="story-comment">
         <img src={CommentIcon} alt="comment" />
         <span>{descendants}</span>
@@ -44,6 +44,9 @@ const StyledStory = styled.article`
       line-height: 19.2px;
     }
     > p {
+      display: block;
+      margin-left: 15px;
+      padding-top: 15px;
       color: #fff;
       font-weight: 300;
       line-height: 19.2px;

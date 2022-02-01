@@ -47,7 +47,7 @@ const DateTopDayContainer = styled.div`
     margin: 35px 20px 0 20px;
     font-size: 10px;
     font-weight: 400;
-    font-family: "roboto";
+    font-family: "Roboto";
     color: #fff;
     position: relative;
     > .ranking-stories {

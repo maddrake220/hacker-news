@@ -18,17 +18,17 @@ const TopContainer = () => {
           <Loading />
         </>
       ) : (
-        <>
+        <ul>
           {stories.map((story, index) => (
-            <>
+            <li>
               {index === 0 ? (
                 <SwiperDateTop key={index} story={story} ranking={index + 1} />
               ) : (
                 <Story key={index} story={story} ranking={index + 1} />
               )}
-            </>
+            </li>
           ))}
-        </>
+        </ul>
       )}
     </StyledTopContainer>
   );
@@ -39,5 +39,14 @@ const StyledTopContainer = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  > ul {
+    height: 694px;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 export default TopContainer;

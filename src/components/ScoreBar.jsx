@@ -3,16 +3,18 @@ import { SCORE_MAX_VALUE } from "../utils/constants";
 
 const ScoreBar = ({ score, barType }) => {
   return (
-    <StyledScoreBar className={`${barType}`}>
+    <StyledScoreBar className={`${barType}`} score={score}>
       <div className={`progress-icon ${barType}`}>
         <span className="cannot-dragging">P</span>
       </div>
-      <div className={`progress ${barType}`}>
-        {score && (
-          <span>
-            {score > Number(SCORE_MAX_VALUE) ? `${SCORE_MAX_VALUE}+` : score}
-          </span>
-        )}
+      <div className={`progress-bar ${barType}`}>
+        <div className={`progress ${barType}`}>
+          {score && (
+            <span>
+              {score > Number(SCORE_MAX_VALUE) ? `${SCORE_MAX_VALUE}+` : score}
+            </span>
+          )}
+        </div>
       </div>
     </StyledScoreBar>
   );
@@ -54,28 +56,43 @@ const StyledScoreBar = styled.div`
       line-height: 12px;
     }
   }
-  > .progress {
-    position: relative;
+  > .progress-bar {
     height: 12px;
     width: 280px;
+    background-color: #c4c4c4;
     margin-left: 6.67px;
     border-radius: 20px;
-    background: linear-gradient(
-      90deg,
-      #ff9696 0%,
-      #ff0303 66.28%,
-      #ff4949 129.85%
-    );
-    > span {
-      display: flex;
-      justify-content: center;
-      font-weight: 400;
-      font-size: 10px;
-      line-height: 12px;
+    > .progress {
+      height: 12px;
+      width: calc(
+        (${(props) => (props.score > 500 ? "100" : (props.score / 500) * 100)}%)
+      );
+      border-radius: 20px;
+      background: linear-gradient(
+        90deg,
+        #ff9696 0%,
+        #ff0303 66.28%,
+        #ff4949 129.85%
+      );
+      > span {
+        display: flex;
+        justify-content: center;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+      }
+    }
+    > .progress.story-bar {
+      width: calc(
+        (${(props) => (props.score > 500 ? "100" : (props.score / 500) * 100)}%)
+      );
+      height: 2px;
+      > span {
+        display: none;
+      }
     }
   }
-  > .progress.story-bar {
-    width: 251px;
+  .progress-bar.story-bar {
     height: 2px;
   }
 `;
