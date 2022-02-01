@@ -5,15 +5,18 @@ import styled from "styled-components";
 import Search from "../components/Search";
 import DateTopDay from "../components/DateTopDay";
 import SwiperDateTop from "../components/SwiperDateTop";
-
+import Loading from "../components/Loading";
 const TopContainer = () => {
   const { isLoading, stories } = useDataFetcher(TYPETOP);
+
   return (
     <StyledTopContainer>
       <Search />
       <DateTopDay />
       {isLoading ? (
-        <p className="loading">Loading...</p>
+        <>
+          <Loading />
+        </>
       ) : (
         <>
           {stories.map((story, index) => (

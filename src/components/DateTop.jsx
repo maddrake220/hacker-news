@@ -3,10 +3,9 @@ import USER_ICON from "../assets/Main1stUserIcon.png";
 import TIME_ICON from "../assets/Main1stTimeIcon.png";
 import COMMENT_ICON from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
-import { SCORE_MAX_VALUE } from "../utils/constants";
 import ScoreBar from "./ScoreBar";
 
-const TodayTop = ({ story, ranking }) => {
+const DateTop = ({ story, ranking }) => {
   const {
     data: { title, score, url, by, time, descendants },
   } = story;
@@ -46,7 +45,7 @@ const TodayTop = ({ story, ranking }) => {
     </StyledDateTop>
   );
 };
-export default TodayTop;
+export default DateTop;
 
 const StyledDateTop = styled.article`
   color: #fff;

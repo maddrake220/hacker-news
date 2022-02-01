@@ -2,15 +2,23 @@ import dayjs from "dayjs";
 import "dayjs/locale/ko";
 import styled from "styled-components";
 import { RANKING_LIST_TEXT, UPDATE_BY_DATE_TEXT } from "../utils/constants";
+import Badge_Icon from "../assets/Badge1.png";
+import ClockTime_Icon from "../assets/ClockTime1.png";
 const TodayTopDate = () => {
   const now = dayjs();
   dayjs.locale("ko");
   return (
-    <DateTopDayContainer>
+    <DateTopDayContainer isToday={false}>
       <h2>{now.format(`YYYY/M/DD/(ddd)`)}</h2>
       <aside>
-        <span className="ranking-stories">{RANKING_LIST_TEXT}</span>
-        <span className="update-everyday">{UPDATE_BY_DATE_TEXT}</span>
+        <div className="ranking-stories">
+          <img src={Badge_Icon} alt="" />
+          <span>{RANKING_LIST_TEXT}</span>
+        </div>
+        <div className="update-everyday">
+          <img src={ClockTime_Icon} alt="" />
+          <span>{UPDATE_BY_DATE_TEXT}</span>
+        </div>
       </aside>
     </DateTopDayContainer>
   );
@@ -36,7 +44,7 @@ const DateTopDayContainer = styled.div`
     color: ${(props) => (props.isToday ? "#96D9FF" : "#fff")};
   }
   > aside {
-    margin: 34px 20px 0 20px;
+    margin: 35px 20px 0 20px;
     font-size: 10px;
     font-weight: 400;
     font-family: "roboto";
@@ -46,12 +54,15 @@ const DateTopDayContainer = styled.div`
       position: absolute;
       top: 3.5px;
       left: 0;
+      display: flex;
+      align-items: center;
     }
     > .update-everyday {
       position: absolute;
       top: 3.5px;
       right: 0;
-      display: ${(props) => (props.isToday ? "block" : "none")};
+      align-items: center;
+      display: ${(props) => (props.isToday ? "flex" : "none")};
     }
   }
 `;
