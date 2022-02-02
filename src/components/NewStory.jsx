@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ScoreBar from "./ScoreBar";
 import CommentIcon from "../assets/Main1stCommentIcon.png";
-const Story = ({ story, ranking }) => {
+const NewStory = ({ story, ranking }) => {
   const {
     data: { title, score, url, descendants },
   } = story;
@@ -24,7 +24,7 @@ const Story = ({ story, ranking }) => {
     </StyledStory>
   );
 };
-export default Story;
+export default NewStory;
 
 const StyledStory = styled.article`
   color: #fff;

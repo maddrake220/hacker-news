@@ -35,13 +35,26 @@ const getStory = async (id) => {
 //   }
 // };
 
-export const getStories = async (type) => {
+export const getStories = async (type, start = 0, end = 30) => {
   try {
     const { data: storyIds } = await axios.get(
       `${BASE_API_URL}/${type}stories.json`
     );
-    const stories = await Promise.all(storyIds.slice(0, 60).map(getStory));
+    const stories = await Promise.all(storyIds.slice(start, end).map(getStory));
     return stories;
+  } catch (error) {
+    console.log(error, "Error while getting stories");
+  }
+};
+
+export const getStoriesIds = async (type) => {
+  try {
+    const stories = await axios.get(`${BASE_API_URL}/${type}stories.json`);
+
+    const pages = stories.data
+      .filter((_, index) => index % 6 === 0)
+      .map((_, index) => index + 1);
+    return pages;
   } catch (error) {
     console.log(error, "Error while getting stories");
   }

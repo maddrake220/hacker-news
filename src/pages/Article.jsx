@@ -1,5 +1,7 @@
+import ArticleContainer from "../containers/ArticleContainer";
+
 const Article = () => {
-  return <div>Article</div>;
+  return <ArticleContainer />;
 };
 
 export default Article;

@@ -5,16 +5,13 @@ import Jobs from "./Jobs";
 import Show from "./Show";
 import Top from "./Top";
 import styled from "styled-components";
-import LOGO from "../assets/LOGO.png";
-import USER_AVATAR from "../assets/UserAccountProfile1.png";
 import Navigation from "../components/Navigation";
 const HackerNewsApp = () => {
   const { pathname } = useLocation();
   return (
     <StyledHackerNewsApp>
       <header>
-        <img className="hackernews-logo" src={LOGO} alt="hackernewslogo"></img>
-        <img className="useravatar" src={USER_AVATAR} alt="useravatar"></img>
+        <h1>HackerNews</h1>
       </header>
       <section>
         {pathname === "/" && <Top />}
@@ -38,18 +35,11 @@ const StyledHackerNewsApp = styled.section`
   overflow: hidden;
   position: relative;
   background-color: #121212;
-
   > header {
-    margin-top: 49px;
+    padding-top: 49px;
     padding-bottom: 38px;
-    position: relative;
-    .hackernews-logo {
-      position: absolute;
-      left: 20px;
-    }
-    .useravatar {
-      position: absolute;
-      right: 28.56px;
+    > h1 {
+      font-size: 0;
     }
   }
 `;
