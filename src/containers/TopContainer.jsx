@@ -1,52 +1,17 @@
-import Story from "../components/Story";
-import { useDataFetcher } from "../hooks/useDataFetcher";
-import { TYPETOP } from "../utils/constants";
-import styled from "styled-components";
-import Search from "../components/Search";
-import DateTopDay from "../components/DateTopDay";
-import SwiperDateTop from "../components/SwiperDateTop";
-import Loading from "../components/Loading";
+import { getStoriesThunk } from "../redux/actions";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { useCallback } from "react";
+import TopList from "../components/TopList";
+import { TYPE_TOP } from "../utils/constants";
 const TopContainer = () => {
-  const { isLoading, stories } = useDataFetcher(TYPETOP);
+  const { data, loading } = useSelector((state) => state.top);
+  const dispatch = useDispatch();
+  const getData = useCallback(() => {
+    dispatch(getStoriesThunk(TYPE_TOP));
+  }, [dispatch]);
 
-  return (
-    <StyledTopContainer>
-      <Search />
-      <DateTopDay />
-      {isLoading ? (
-        <>
-          <Loading />
-        </>
-      ) : (
-        <ul>
-          {stories.map((story, index) => (
-            <li>
-              {index === 0 ? (
-                <SwiperDateTop key={index} story={story} ranking={index + 1} />
-              ) : (
-                <Story key={index} story={story} ranking={index + 1} />
-              )}
-            </li>
-          ))}
-        </ul>
-      )}
-    </StyledTopContainer>
-  );
+  return <TopList loading={loading} list={data} getData={getData} />;
 };
 
-const StyledTopContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  > ul {
-    height: 694px;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
 export default TopContainer;

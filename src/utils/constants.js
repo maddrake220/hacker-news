@@ -1,6 +1,6 @@
 export const BASE_API_URL = "https://hacker-news.firebaseio.com/v0";
 
-export const TYPETOP = "top";
+export const TYPE_TOP = "top";
 
 export const RANKING_LIST_TEXT = "랭킹 1위 - 5위 기사";
 

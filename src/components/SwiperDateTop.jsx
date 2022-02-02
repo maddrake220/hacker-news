@@ -2,13 +2,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
 import DateTop from "./DateTop";
+import { useDispatch } from "react-redux";
 
 const SwiperDateTop = ({ key, story, ranking }) => {
   return (
     <Swiper
       slidesPerView={1}
       onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log("slide change")}
+      onSlideChange={(swiper) => {
+        //dispatch(nextSlide(swiper.activeIndex));
+      }}
       style={{ width: "390px" }}
       dir="rtl"
     >
