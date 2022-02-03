@@ -4,7 +4,14 @@ import Pagination from "./Pagination";
 import Recent from "./Recent";
 import TrendingNow from "./TrendingNow";
 
-const ArticleList = ({ loading, pages, list, getData }) => {
+const ArticleList = ({
+  loading,
+  pages,
+  list,
+  getData,
+  getDataTrending,
+  trendingList,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -12,13 +19,16 @@ const ArticleList = ({ loading, pages, list, getData }) => {
     getData(currentPage);
   }, [getData, currentPage]);
 
+  useEffect(() => {
+    getDataTrending();
+  }, [getDataTrending]);
   return (
     <StyledArticleList>
       <header>
         <h2>Article</h2>
       </header>
       <main>
-        <TrendingNow />
+        <TrendingNow trendingList={trendingList} />
         <Recent loading={loading} list={list} />
         <Pagination
           currentPage={currentPage}

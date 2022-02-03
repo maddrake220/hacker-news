@@ -34,6 +34,7 @@ const Navigation = () => {
 
 const StyledNavigation = styled.div`
   position: fixed;
+  z-index: 99;
   bottom: 0;
   width: 396px;
   height: 72px;

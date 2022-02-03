@@ -1,9 +1,20 @@
 import styled from "styled-components";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import Trending from "./Trending";
 
-const TrendingNow = () => {
+const TrendingNow = ({ trendingList }) => {
   return (
     <StyledTrendingNow>
       <h3>Trending Now</h3>
+      <Swiper>
+        {trendingList &&
+          trendingList.map((item) => (
+            <SwiperSlide>
+              <Trending item={item} />
+            </SwiperSlide>
+          ))}
+      </Swiper>
     </StyledTrendingNow>
   );
 };

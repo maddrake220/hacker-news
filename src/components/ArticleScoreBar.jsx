@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { SCORE_MAX_VALUE } from "../utils/constants";
 
-const ScoreBar = ({ score }) => {
+const ScoreBar = ({ score, barType }) => {
   return (
     <StyledScoreBar score={score}>
-      <div className={`progress-icon`}>
+      <div className={`progress-icon ${barType}`}>
         <span className="cannot-dragging">P</span>
       </div>
-      <div className="score">{score}</div>
-      <div className={`progress-bar`}>
+      <div className={`score ${barType}`}>{score}</div>
+      <div className={`progress-bar ${barType}`}>
         <div className={`progress`} />
       </div>
     </StyledScoreBar>
@@ -38,6 +38,9 @@ const StyledScoreBar = styled.div`
       font-weight: 700;
       font-size: 14px;
     }
+    &.trending {
+      display: none;
+    }
   }
   > .score {
     margin-left: 4px;
@@ -48,6 +51,9 @@ const StyledScoreBar = styled.div`
     font-size: 10px;
     line-height: 12px;
     color: rgba(255, 255, 255, 0.87);
+    &.trending {
+      display: none;
+    }
   }
   > .progress-bar {
     height: 2px;
@@ -55,6 +61,9 @@ const StyledScoreBar = styled.div`
     background-color: #c4c4c4;
     margin-left: 6.67px;
     border-radius: 20px;
+    &.trending {
+      width: 249px;
+    }
     > .progress {
       height: 2px;
       width: calc(

@@ -4,7 +4,7 @@ import CommentIcon from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
 import UserIcon from "../assets/icon-user.png";
 import TimeIcon from "../assets/icon-time.png";
-const NewStory = ({ story, ranking }) => {
+const NewStory = ({ story }) => {
   const {
     data: { title, score, by, time, url, descendants },
   } = story;

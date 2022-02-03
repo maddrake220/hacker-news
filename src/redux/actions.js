@@ -1,13 +1,19 @@
 import { getStories, getStoriesIds } from "../utils/apis";
-import { TYPE_TOP } from "../utils/constants";
+import { TYPE_NEW, TYPE_TOP } from "../utils/constants";
 import { sortStoriesByScore } from "../utils/sortStories";
 
 export const GET_STORIES_START = "GET_STORIES_START";
 export const GET_STORIES_SUCCESS = "GET_STORIES_SUCCESS";
 export const GET_STORIES_FAIL = "GET_STORIES_FAIL";
+
+export const GET_TOP_STORIES_START = "GET_TOP_STORIES_START";
+export const GET_TOP_STORIES_SUCCESS = "GET_TOP_STORIES_SUCCESS";
+export const GET_TOP_STORIES_FAIL = "GET_TOP_STORIES_FAIL";
+
 export const GET_STORIES_IDS_START = "GET_STORIES_IDS_START";
 export const GET_STORIES_IDS_SUCCESS = "GET_STORIES_IDS_SUCCESS";
 export const GET_STORIES_IDS_FAIL = "GET_STORIES_IDS_FAIL";
+
 export function getStoriesStart() {
   return {
     type: GET_STORIES_START,
@@ -22,6 +28,24 @@ export function getStoriesSuccess(data) {
 export function getStoriesFail(error) {
   return {
     type: GET_STORIES_FAIL,
+    error,
+  };
+}
+
+export function getTopStoriesStart() {
+  return {
+    type: GET_TOP_STORIES_START,
+  };
+}
+export function getTopStoriesSuccess(data) {
+  return {
+    type: GET_TOP_STORIES_SUCCESS,
+    data,
+  };
+}
+export function getTopStoriesFail(error) {
+  return {
+    type: GET_TOP_STORIES_FAIL,
     error,
   };
 }
@@ -46,13 +70,29 @@ export function getStoriesIdsFail(error) {
 
 export function getStoriesThunk(type, start, end) {
   return async (dispatch, getState) => {
-    try {
-      dispatch(getStoriesStart());
-      let res = await getStories(type, start, end);
-      if (type === TYPE_TOP) res = sortStoriesByScore(res).slice(0, 5);
-      dispatch(getStoriesSuccess(res));
-    } catch (e) {
-      dispatch(getStoriesFail());
+    switch (type) {
+      case TYPE_TOP:
+        try {
+          dispatch(getTopStoriesStart());
+          let res = await getStories(type, start, end);
+          res = sortStoriesByScore(res).slice(0, 5);
+          dispatch(getTopStoriesSuccess(res));
+        } catch (e) {
+          dispatch(getTopStoriesFail());
+        }
+        break;
+      case TYPE_NEW:
+        try {
+          dispatch(getStoriesStart());
+          let res = await getStories(type, start, end);
+          dispatch(getStoriesSuccess(res));
+        } catch (e) {
+          dispatch(getStoriesFail());
+        }
+
+        break;
+      default: {
+      }
     }
   };
 }
