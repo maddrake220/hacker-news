@@ -62,7 +62,6 @@ export function getStoriesIdsThunk(type) {
     try {
       dispatch(getStoriesIdsStart());
       let res = await getStoriesIds(type);
-      console.log(res);
       dispatch(getStoriesIdsSuccess(res));
     } catch (e) {
       dispatch(getStoriesIdsFail());

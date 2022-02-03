@@ -14,7 +14,7 @@ const DateTop = ({ story, ranking }) => {
   return (
     <StyledDateTop dir="ltr">
       <div className="date-top-url">
-        <span>{url.slice(0, 35)}...</span>
+        <span>{url && url.length > 35 ? <>{url.slice(0, 35)}...</> : url}</span>
       </div>
       <div className="ranking">
         <span className="cannot-dragging">{ranking}</span>

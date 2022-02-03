@@ -1,16 +1,17 @@
-import { useState } from "react";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import Loading from "./Loading";
-import NewStory from "./NewStory";
+import Pagination from "./Pagination";
 import Recent from "./Recent";
 import TrendingNow from "./TrendingNow";
 
-const ArticleList = ({ loading, pages, list, getData }) => {
+const ArticleList = ({ loading, pages, list, getData, getPages }) => {
   useEffect(() => {
     getData();
   }, [getData]);
+  useEffect(() => {
+    getPages();
+  }, [getPages]);
 
   return (
     <StyledArticleList>
@@ -20,19 +21,15 @@ const ArticleList = ({ loading, pages, list, getData }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="article-wrap">
-          <div>
-            {list?.map((story, index) => (
-              <NewStory key={index} story={story} />
-            ))}
-          </div>
-          <div>
-            {pages &&
-              pages
-                .slice(0, 5)
-                .map((v) => <NavLink to={`/article/${v}`}>{v}</NavLink>)}
-          </div>
-        </div>
+        <>
+          <main>
+            <TrendingNow />
+            <Recent list={list} />
+          </main>
+          <footer>
+            <Pagination pages={pages} />
+          </footer>
+        </>
       )}
     </StyledArticleList>
   );
@@ -46,6 +43,7 @@ const StyledArticleList = styled.section`
   color: rgba(255, 255, 255, 0.87);
   font-family: "Pretendard Variable";
   font-style: normal;
+  position: relative;
   > header {
     > h2 {
       position: absolute;
@@ -56,15 +54,6 @@ const StyledArticleList = styled.section`
       line-height: 29px;
       letter-spacing: -0.02em;
       color: rgba(196, 196, 196, 0.52);
-    }
-  }
-  > .article-wrap {
-    height: 694px;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-      display: none;
     }
   }
 `;

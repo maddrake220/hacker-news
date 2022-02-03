@@ -8,8 +8,10 @@ const ArticleContainer = () => {
   const { data, pages, loading } = useSelector((state) => state.top);
   const dispatch = useDispatch();
   const getData = useCallback(() => {
-    dispatch(getStoriesIdsThunk(TYPE_NEW));
     dispatch(getStoriesThunk(TYPE_NEW));
+  }, [dispatch]);
+  const getPages = useCallback(() => {
+    dispatch(getStoriesIdsThunk(TYPE_NEW));
   }, [dispatch]);
   return (
     <ArticleList
@@ -17,6 +19,7 @@ const ArticleContainer = () => {
       pages={pages}
       list={data}
       getData={getData}
+      getPages={getPages}
     />
   );
 };

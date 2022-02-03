@@ -10,9 +10,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HackerNewsApp />}>
-          <Route path="/article" element={<Article />}>
-            <Route path="/article/:page" element={<Article />} />
-          </Route>
+          <Route path="/article" element={<Article />} />
           <Route path="/ask" element={<Ask />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/show" element={<Show />} />
