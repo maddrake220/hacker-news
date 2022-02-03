@@ -36,8 +36,6 @@ const StyledHackerNewsApp = styled.section`
   position: relative;
   background-color: #121212;
   > header {
-    padding-top: 49px;
-    padding-bottom: 38px;
     > h1 {
       font-size: 0;
     }

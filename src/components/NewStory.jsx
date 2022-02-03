@@ -1,22 +1,40 @@
 import styled from "styled-components";
-import ScoreBar from "./ScoreBar";
+import ArticleScoreBar from "./ArticleScoreBar";
 import CommentIcon from "../assets/Main1stCommentIcon.png";
+import { substract } from "../utils/DateCalculation";
+import UserIcon from "../assets/icon-user.png";
+import TimeIcon from "../assets/icon-time.png";
 const NewStory = ({ story, ranking }) => {
   const {
-    data: { title, score, url, descendants },
+    data: { title, score, by, time, url, descendants },
   } = story;
+
+  const diff = substract(time);
   return (
     <StyledStory href={url}>
       <a href={url} target="_blank" rel="noreferrer">
+        <span className="url">
+          {url && url.length > 46 ? <>{url.slice(0, 46)}...</> : url}
+        </span>
         <div className="story-title">
-          <span>{ranking && ranking}</span>
           <p>
-            {title.slice(0, 68)}
-            {title.length > 68 && <>...</>}
+            {title && title.length > 60 ? <>{title.slice(0, 60)}...</> : title}
           </p>
         </div>
       </a>
-      <ScoreBar score={score} barType="story-bar" />
+      <div className="score-bar">
+        <ArticleScoreBar score={score} />
+      </div>
+      <div className="story-info">
+        <div className="story-user">
+          <img src={UserIcon} alt="" />
+          <span>{by}</span>
+        </div>
+        <div className="story-time">
+          <img src={TimeIcon} alt="" />
+          <span>{diff}</span>
+        </div>
+      </div>
       <div className="story-comment">
         <img src={CommentIcon} alt="comment" />
         <span>{descendants}</span>
@@ -28,45 +46,53 @@ export default NewStory;
 
 const StyledStory = styled.article`
   color: #fff;
-  width: 390px;
-  height: 90px;
-  margin-top: 5px;
-  background-color: #232429;
+  width: 350px;
+  height: 124px;
+  margin-bottom: 49px;
   position: relative;
   font-family: "Pretendard Variable";
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  .url {
+    font-size: 14px;
+    line-height: 17px;
+  }
   .story-title {
-    margin: 16px 59px 0 35px;
-    > span {
-      position: absolute;
-      top: 16px;
-      left: 20px;
-      font-weight: 400;
-      line-height: 19.2px;
+    margin-top: 8px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+  .score-bar {
+    position: absolute;
+    bottom: 41px;
+  }
+  .story-info {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(196, 196, 196, 0.52);
+    display: flex;
+    span {
+      margin-left: 4px;
     }
-    > p {
-      display: block;
-      margin-left: 15px;
-      padding-top: 15px;
-      color: #fff;
-      font-weight: 300;
-      line-height: 19.2px;
-      letter-spacing: 2%;
+    .story-user {
+      margin-right: 16px;
     }
   }
   .story-comment {
     position: absolute;
-    right: 19px;
-    bottom: 18px;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    font-family: "Pretendard Variable";
-    color: #c0c4c7;
+    right: 0;
+    bottom: 0;
+    font-size: 12px;
+    line-height: 14px;
     display: flex;
     justify-content: center;
-    align-items: center;
     > span {
-      margin-left: 3.6px;
+      margin-left: 4px;
     }
   }
 `;

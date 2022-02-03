@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_URL } from "./constants";
+import { BASE_API_URL, PAGE_PER_VIEW } from "./constants";
 
 // export const getStory = async (id) => {
 //   try {
@@ -35,7 +35,7 @@ const getStory = async (id) => {
 //   }
 // };
 
-export const getStories = async (type, start = 0, end = 30) => {
+export const getStories = async (type, start, end) => {
   try {
     const { data: storyIds } = await axios.get(
       `${BASE_API_URL}/${type}stories.json`

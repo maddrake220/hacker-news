@@ -11,10 +11,13 @@ const TrendingNow = () => {
 export default TrendingNow;
 
 const StyledTrendingNow = styled.section`
-  margin-top: 11px;
-  width: 350px;
+  width: 390px;
   height: 250px;
+  position: relative;
   > h3 {
+    position: absolute;
+    top: 11px;
+    left: 20px;
     font-style: normal;
     font-weight: 300;
     font-size: 20px;

@@ -49,6 +49,8 @@ const StyledTopList = styled.section`
   align-items: center;
 
   > header {
+    padding-top: 49px;
+    padding-bottom: 38px;
     > h2 {
       font-size: 0;
     }
