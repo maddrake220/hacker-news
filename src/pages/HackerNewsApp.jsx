@@ -6,6 +6,7 @@ import Show from "./Show";
 import Top from "./Top";
 import styled from "styled-components";
 import Navigation from "../components/Navigation";
+import Item from "./Item";
 const HackerNewsApp = () => {
   const { pathname } = useLocation();
   return (
@@ -19,6 +20,7 @@ const HackerNewsApp = () => {
         {pathname === "/ask" && <Ask />}
         {pathname === "/jobs" && <Jobs />}
         {pathname === "/show" && <Show />}
+        {pathname.slice(0, 5) === "/item" && <Item />}
       </section>
       <footer>
         <Navigation />

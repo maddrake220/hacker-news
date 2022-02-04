@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import USER_ICON from "../assets/Main1stUserIcon.png";
 import TIME_ICON from "../assets/Main1stTimeIcon.png";
-import COMMENT_ICON from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
 import ScoreBar from "./ScoreBar";
+import CommentInfo from "./CommentInfo";
 
 const DateTop = ({ story, ranking }) => {
   const {
-    data: { title, score, url, by, time, descendants },
+    data: { id, title, score, url, by, time, descendants },
   } = story;
   const diffTime = substract(time);
 
@@ -36,9 +36,8 @@ const DateTop = ({ story, ranking }) => {
           <img src={TIME_ICON} alt="time"></img>
           <span>{diffTime}</span>
         </div>
-        <div>
-          <img src={COMMENT_ICON} alt="comment"></img>
-          <span>{descendants}</span>
+        <div className="story-comment">
+          <CommentInfo id={id} descendants={descendants} />
         </div>
       </div>
       <ScoreBar score={score} />

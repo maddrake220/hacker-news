@@ -1,4 +1,9 @@
-import { getStories, getStoriesIds } from "../utils/apis";
+import {
+  getStories,
+  getStoriesIds,
+  getStory,
+  getComments,
+} from "../utils/apis";
 import { TYPE_NEW, TYPE_TOP } from "../utils/constants";
 import { sortStoriesByScore } from "../utils/sortStories";
 
@@ -13,6 +18,14 @@ export const GET_TOP_STORIES_FAIL = "GET_TOP_STORIES_FAIL";
 export const GET_STORIES_IDS_START = "GET_STORIES_IDS_START";
 export const GET_STORIES_IDS_SUCCESS = "GET_STORIES_IDS_SUCCESS";
 export const GET_STORIES_IDS_FAIL = "GET_STORIES_IDS_FAIL";
+
+export const GET_STORY_START = "GET_STORY_START";
+export const GET_STORY_SUCCESS = "GET_STORY_SUCCESS";
+export const GET_STORY_FAIL = "GET_STORY_FAIL";
+
+export const GET_COMMENTS_START = "GET_COMMENTS_START";
+export const GET_COMMENTS_SUCCESS = "GET_COMMENTS_SUCCESS";
+export const GET_COMMENTS_FAIL = "GET_COMMENTS_FAIL";
 
 export function getStoriesStart() {
   return {
@@ -68,6 +81,65 @@ export function getStoriesIdsFail(error) {
   };
 }
 
+export function getStoryStart() {
+  return {
+    type: GET_STORY_START,
+  };
+}
+export function getStorySuccess(data) {
+  return {
+    type: GET_STORY_SUCCESS,
+    data,
+  };
+}
+export function getStoryFail(error) {
+  return {
+    type: GET_STORY_FAIL,
+    error,
+  };
+}
+
+export function getCommentsStart() {
+  return {
+    type: GET_COMMENTS_START,
+  };
+}
+export function getCommentsSuccess(data) {
+  return {
+    type: GET_COMMENTS_SUCCESS,
+    data,
+  };
+}
+export function getCommentsFail(error) {
+  return {
+    type: GET_COMMENTS_FAIL,
+    error,
+  };
+}
+
+export function getCommentsThunk(id) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(getCommentsStart());
+      let res = await getComments(id);
+      dispatch(getCommentsSuccess(res));
+    } catch (e) {
+      dispatch(getCommentsFail(e));
+    }
+  };
+}
+
+export function getStoryThunk(id) {
+  return async (dispatch, getState) => {
+    try {
+      dispatch(getStoryStart());
+      let res = await getStory(id);
+      dispatch(getStorySuccess(res));
+    } catch (e) {
+      dispatch(getStoryFail(e));
+    }
+  };
+}
 export function getStoriesThunk(type, start, end) {
   return async (dispatch, getState) => {
     switch (type) {

@@ -10,7 +10,7 @@ import { BASE_API_URL, PAGE_PER_VIEW } from "./constants";
 //   }
 // };
 
-const getStory = async (id) => {
+export const getStory = async (id) => {
   try {
     const story = await axios.get(`${BASE_API_URL}/item/${id}.json`);
     return story;
@@ -18,6 +18,20 @@ const getStory = async (id) => {
     console.log(error, "Error while getting a story.");
   }
 };
+export const getComments = async (id) => {
+  try {
+    const story = await axios.get(`${BASE_API_URL}/item/${id}.json`);
+    console.log("here!", story);
+    // return Promise.resolve(story.data.kids.map(getStory)).then((value) => {
+    //   return value;
+    // });
+    const comments = Promise.all(story.data.kids.map(getStory));
+    return comments;
+  } catch (error) {
+    console.log(error, "Error while getting a story");
+  }
+};
+
 // export const getStories = async (type) => {
 //   try {
 //     const { data: storyIds } = await axios.get(
