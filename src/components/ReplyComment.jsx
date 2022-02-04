@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
-import { getComments } from "../utils/apis";
+import { GetCommentsFetcher } from "../hooks/DataFetcher";
 import Comment from "./Comment";
 
 const ReplyComment = ({ responseTo, dth }) => {
-  const [comment, setComment] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  useEffect(() => {
-    setIsLoading(true);
-    getComments(responseTo)
-      .then((v) => {
-        setComment(v);
-        setIsLoading(false);
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
-    return () => setIsLoading(false);
-  }, [responseTo]);
+  const [comment, isLoading] = GetCommentsFetcher(responseTo);
   return (
     <div>
       {comment &&

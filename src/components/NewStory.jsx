@@ -4,9 +4,10 @@ import CommentIcon from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
 import UserIcon from "../assets/icon-user.png";
 import TimeIcon from "../assets/icon-time.png";
+import CommentInfo from "./CommentInfo";
 const NewStory = ({ story }) => {
   const {
-    data: { title, score, by, time, url, descendants },
+    data: { id, title, score, by, time, url, descendants },
   } = story;
 
   const diff = substract(time);
@@ -36,8 +37,7 @@ const NewStory = ({ story }) => {
         </div>
       </div>
       <div className="story-comment">
-        <img src={CommentIcon} alt="comment" />
-        <span>{descendants}</span>
+        <CommentInfo id={id} descendants={descendants} />
       </div>
     </StyledStory>
   );

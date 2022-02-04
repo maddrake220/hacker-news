@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import ScoreBar from "./ScoreBar";
 import CommentIcon from "../assets/Main1stCommentIcon.png";
+import CommentInfo from "./CommentInfo";
 const Story = ({ story, ranking }) => {
   const {
-    data: { title, score, url, descendants },
+    data: { id, title, score, url, descendants },
   } = story;
   return (
     <StyledStory href={url}>
@@ -18,8 +19,7 @@ const Story = ({ story, ranking }) => {
       </a>
       <ScoreBar score={score} barType="story-bar" />
       <div className="story-comment">
-        <img src={CommentIcon} alt="comment" />
-        <span>{descendants}</span>
+        <CommentInfo id={id} descendants={descendants} />
       </div>
     </StyledStory>
   );

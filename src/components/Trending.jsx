@@ -4,9 +4,10 @@ import UserIcon from "../assets/icon-user.png";
 import ClockIcon from "../assets/icon-time.png";
 import CommentIcon from "../assets/Main1stCommentIcon.png";
 import ArticleScoreBar from "./ArticleScoreBar";
+import CommentInfo from "./CommentInfo";
 const Trending = ({ item }) => {
   const {
-    data: { url, title, score, by, time, descendants },
+    data: { id, url, title, score, by, time, descendants },
   } = item;
   const diff = substract(time);
   return (
@@ -31,8 +32,7 @@ const Trending = ({ item }) => {
         </div>
       </div>
       <div className="comments">
-        <img src={CommentIcon} alt="" />
-        <span>{descendants}</span>
+        <CommentInfo id={id} descendants={descendants} />
       </div>
     </StyledTrending>
   );

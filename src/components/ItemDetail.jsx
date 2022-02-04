@@ -1,23 +1,21 @@
 import { useEffect } from "react";
 import styled from "styled-components";
+import { GetCommentsFetcher } from "../hooks/DataFetcher";
 import CommentList from "./CommentList";
 import Item from "./Item";
 
-const ItemDetail = ({ data, comments, loading, getData, getComments }) => {
-  console.log("wtf", comments);
+const ItemDetail = ({ id, data, loading, getData }) => {
   useEffect(() => {
     getData();
   }, [getData]);
-  useEffect(() => {
-    getComments();
-  }, [getComments]);
+  const [comments, isLoading] = GetCommentsFetcher(id);
   return (
     <StyledItemDetail>
       <header>
         <h2>Comments</h2>
       </header>
       {data.data && <Item item={data} loading={loading} />}
-      {comments && <CommentList comments={comments} loading={loading} />}
+      {comments && <CommentList comments={comments} loading={isLoading} />}
     </StyledItemDetail>
   );
 };
