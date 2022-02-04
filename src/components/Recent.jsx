@@ -20,12 +20,13 @@ const Recent = ({ loading, list }) => {
 
 const StyledRecent = styled.section`
   height: 494px;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   position: relative;
   display: flex;
   align-items: center;
+
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
   flex-direction: column;
   ::-webkit-scrollbar {
     display: none;

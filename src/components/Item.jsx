@@ -35,7 +35,6 @@ const Item = ({ item, loading }) => {
 
 const StyledItem = styled.div`
   width: 350px;
-  height: 140px;
   color: #fff;
   font-family: "Pretendard Variable";
   font-size: normal;

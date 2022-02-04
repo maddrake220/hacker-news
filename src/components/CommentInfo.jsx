@@ -20,6 +20,7 @@ const StyledCommentInfo = styled.div`
     align-items: center;
     justify-content: center;
     > span {
+      color: rgba(196, 196, 196, 0.52);
       margin-left: 4px;
     }
   }
