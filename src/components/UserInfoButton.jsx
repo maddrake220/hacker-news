@@ -1,7 +1,6 @@
-import UserInfoIcon from "../assets/userinfo-icon.png";
-
+import UserInfoModal from "./UserInfoModal";
 const UserInfoButton = () => {
-  return <img src={UserInfoIcon} alt="" />;
+  return <UserInfoModal by={1234} isOwnUser={true} />;
 };
 
 export default UserInfoButton;

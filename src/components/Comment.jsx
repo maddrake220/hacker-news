@@ -4,6 +4,7 @@ import { substract } from "../utils/DateCalculation";
 import TimeInfo from "./TimeInfo";
 import UpDownIcon from "../assets/UpDownArrow.png";
 import Loading from "./Loading";
+import UserInfoModal from "./UserInfoModal";
 const Comment = ({ isloading, comment, dth }) => {
   const textRef = useRef(null);
   const { by, text, time } = comment;
@@ -23,7 +24,7 @@ const Comment = ({ isloading, comment, dth }) => {
         <div className="comment-wrap">
           <div className="comment-info">
             <div className="comment-user">
-              <span>{by}</span>
+              <UserInfoModal by={by} isIcon={false} />
             </div>
             <div className="comment-time">
               <TimeInfo diff={diff} />

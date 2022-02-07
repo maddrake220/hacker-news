@@ -5,6 +5,9 @@ import NewStory from "./NewStory";
 const Recent = ({ loading, list }) => {
   return (
     <StyledRecent>
+      <header>
+        <h3>Recent</h3>
+      </header>
       {loading ? (
         <Loading />
       ) : (
@@ -19,6 +22,7 @@ const Recent = ({ loading, list }) => {
 };
 
 const StyledRecent = styled.section`
+  margin-top: 20px;
   height: 494px;
   position: relative;
   display: flex;
@@ -30,6 +34,19 @@ const StyledRecent = styled.section`
   flex-direction: column;
   ::-webkit-scrollbar {
     display: none;
+  }
+  > header {
+    margin-bottom: 44px;
+    h3 {
+      position: absolute;
+      top: 0;
+      left: 20px;
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: -0.02em;
+      color: rgba(255, 255, 255, 0.87);
+    }
   }
 `;
 

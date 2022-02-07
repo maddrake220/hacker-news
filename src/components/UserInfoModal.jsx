@@ -1,10 +1,8 @@
 import { useState } from "react";
 import Modal from "react-modal";
-import styled from "styled-components";
-import { getUser } from "../utils/apis";
 import UserInfo from "./UserInfo";
 import UserInfoDetail from "./UserInfoDetail";
-
+import UserInfoIcon from "../assets/userinfo-icon.png";
 const customStyles = {
   overlay: {
     position: "fixed",
@@ -23,7 +21,7 @@ const customStyles = {
   },
 };
 
-const UserInfoModal = ({ by }) => {
+const UserInfoModal = ({ by, isIcon, isOwnUser = false }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(true);
@@ -39,24 +37,28 @@ const UserInfoModal = ({ by }) => {
 
   return (
     <div>
-      <UserInfo by={by} onClick={openModal} />
+      {isOwnUser ? (
+        <div
+          onClick={openModal}
+          style={{
+            width: "20px",
+            height: "20px",
+            cursor: "pointer",
+          }}
+        >
+          <img src={UserInfoIcon} alt="" />
+        </div>
+      ) : (
+        <UserInfo by={by} onClick={openModal} isIcon={isIcon} />
+      )}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="User Modal"
       >
-        {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>asd</h2>
-        <button onClick={closeModal}>close</button> */}
         <UserInfoDetail by={by} closeModal={closeModal} />
-        {/* <form>
-          <input />
-          <button>tab navigation</button>
-          <button>stays</button>
-          <button>inside</button>
-          <button>the modal</button>
-        </form> */}
       </Modal>
     </div>
   );

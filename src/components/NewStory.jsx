@@ -35,7 +35,11 @@ const NewStory = ({ story }) => {
         </div>
       </div>
       <div className="story-comment">
-        <CommentInfo id={id} descendants={descendants} />
+        <CommentInfo
+          id={id}
+          descendants={descendants}
+          style={{ color: "rgba(196, 196, 196, 0.52)" }}
+        />
       </div>
     </StyledStory>
   );

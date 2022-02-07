@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import UserIcon from "../assets/Main1stUserIcon.png";
-const UserInfo = ({ by, onClick }) => {
+const UserInfo = ({ by, onClick, isIcon = true }) => {
   return (
     <StyledUserInfo>
-      <img src={UserIcon} alt="" />
+      {isIcon && <img src={UserIcon} alt="" />}
       <span onClick={onClick}>{by}</span>
     </StyledUserInfo>
   );

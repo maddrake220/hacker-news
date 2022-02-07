@@ -35,6 +35,9 @@ const ArticleList = ({
       </header>
       <main>
         <TrendingNow trendingList={trendingList} />
+        <div className="horizontal-bar">
+          <div></div>
+        </div>
         <Recent loading={loading} list={list} />
         <Pagination
           currentPage={currentPage}
@@ -56,6 +59,16 @@ const StyledArticleList = styled.section`
   font-family: "Pretendard Variable";
   font-style: normal;
   position: relative;
+  .horizontal-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 46px;
+    div {
+      width: 350px;
+      border: 0.5px solid rgba(196, 196, 196, 0.52);
+    }
+  }
   > header {
     padding-top: 49px;
     padding-bottom: 38px;
@@ -75,7 +88,6 @@ const StyledArticleList = styled.section`
       top: 43px;
       display: flex;
       justify-content: center;
-      align-items: center;
       > * {
         margin-left: 19px;
       }

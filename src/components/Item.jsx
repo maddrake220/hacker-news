@@ -3,7 +3,7 @@ import { substract } from "../utils/DateCalculation";
 import CommentInfo from "./CommentInfo";
 import Loading from "./Loading";
 import TimeInfo from "./TimeInfo";
-import UserInfo from "./UserInfo";
+import UserInfoModal from "./UserInfoModal";
 
 const Item = ({ item, loading }) => {
   const {
@@ -25,7 +25,7 @@ const Item = ({ item, loading }) => {
             </div>
           </a>
           <div className="item-info">
-            <UserInfo by={by} />
+            <UserInfoModal by={by} />
             <TimeInfo diff={diff} />
             <CommentInfo
               descendants={descendants}

@@ -4,6 +4,7 @@ import TIME_ICON from "../assets/Main1stTimeIcon.png";
 import { substract } from "../utils/DateCalculation";
 import ScoreBar from "./ScoreBar";
 import CommentInfo from "./CommentInfo";
+import UserInfoModal from "./UserInfoModal";
 
 const DateTop = ({ story, ranking }) => {
   const {
@@ -28,10 +29,7 @@ const DateTop = ({ story, ranking }) => {
         </div>
       </a>
       <div className="date-top-info">
-        <div>
-          <img src={USER_ICON} alt="user"></img>
-          <span>{by}</span>
-        </div>
+        <UserInfoModal by={by} />
         <div>
           <img src={TIME_ICON} alt="time"></img>
           <span>{diffTime}</span>
