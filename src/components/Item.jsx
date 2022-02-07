@@ -16,16 +16,21 @@ const Item = ({ item, loading }) => {
         <Loading />
       ) : (
         <div className="item-wrap">
-          <div className="item-title">
-            <h3>{title}</h3>
-          </div>
-          <div className="item-url">
-            <span>{url && url.split("/")[2]}</span>
-          </div>
+          <a href={url} target="_blank" rel="noreferrer">
+            <div className="item-title">
+              <h3>{title}</h3>
+            </div>
+            <div className="item-url">
+              <span>{url && url.split("/")[2]}</span>
+            </div>
+          </a>
           <div className="item-info">
             <UserInfo by={by} />
             <TimeInfo diff={diff} />
-            <CommentInfo descendants={descendants} />
+            <CommentInfo
+              descendants={descendants}
+              style={{ color: "rgba(196, 196, 196, 0.52)" }}
+            />
           </div>
         </div>
       )}
@@ -47,10 +52,12 @@ const StyledItem = styled.div`
     }
   }
   .item-url {
-    height: 24px;
-    font-size: 16px;
-    line-height: 19px;
-    color: rgba(255, 255, 255, 0.53);
+    span {
+      height: 24px;
+      font-size: 16px;
+      line-height: 19px;
+      color: rgba(255, 255, 255, 0.53);
+    }
   }
   .item-info {
     margin-top: 3px;

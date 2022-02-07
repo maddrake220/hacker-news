@@ -13,7 +13,7 @@ const Trending = ({ item }) => {
   return (
     <StyledTrending>
       <div className="url">
-        <span>{url && url.length > 35 ? <>{url.slice(0, 35)}...</> : url}</span>
+        <span>{url && url.split("/")[2]}</span>
       </div>
       <div className="title">
         <span>{title}</span>

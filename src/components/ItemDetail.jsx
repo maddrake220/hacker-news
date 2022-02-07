@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import styled from "styled-components";
 import { GetCommentsFetcher } from "../hooks/DataFetcher";
+import BackButton from "./BackButton";
 import CommentList from "./CommentList";
 import Item from "./Item";
+import NewButton from "./NewButton";
 
 const ItemDetail = ({ id, data, loading, getData }) => {
   useEffect(() => {
@@ -12,6 +14,10 @@ const ItemDetail = ({ id, data, loading, getData }) => {
   return (
     <StyledItemDetail>
       <header>
+        <nav>
+          <BackButton />
+          <NewButton />
+        </nav>
         <h2>Comments</h2>
       </header>
       {data.data && <Item item={data} loading={loading} />}
@@ -37,6 +43,7 @@ const StyledItemDetail = styled.section`
     color: rgba(196, 196, 196, 0.52);
     padding-top: 49px;
     padding-bottom: 38px;
+    position: relative;
   }
 `;
 export default ItemDetail;

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import COMMENT_ICON from "../assets/Main1stCommentIcon.png";
-const CommentInfo = ({ id, descendants }) => {
+const CommentInfo = ({ id, descendants, style }) => {
   return (
     <StyledCommentInfo>
       <Link className={!id && `disabled-link`} to={`/item/${id}`}>
         <div className="comment-info">
           <img src={COMMENT_ICON} alt="comment"></img>
-          <span>{descendants}</span>
+          <span style={style}>{descendants}</span>
         </div>
       </Link>
     </StyledCommentInfo>

@@ -7,8 +7,8 @@ import Loading from "./Loading";
 const Comment = ({ isloading, comment, dth }) => {
   const textRef = useRef(null);
   const { by, text, time } = comment;
-  const [toggle, setToggle] = useState(false);
   const diff = substract(time);
+  const [toggle, setToggle] = useState(false);
   const toggleHandler = useCallback(() => {
     setToggle((toggle) => !toggle);
   }, []);
@@ -16,7 +16,7 @@ const Comment = ({ isloading, comment, dth }) => {
     textRef.current.innerHTML = text;
   }, [text]);
   return (
-    <StyledComment dth={dth}>
+    <StyledComment toggle={toggle} dth={dth}>
       {isloading ? (
         <Loading />
       ) : (
@@ -58,7 +58,9 @@ const StyledComment = styled.article`
   display: flex;
   width: 390px;
   padding-bottom: 16px;
-
+  + .reply-comment {
+    display: ${(props) => props.toggle && "none"};
+  }
   p {
     margin-top: 12px;
   }
@@ -101,7 +103,6 @@ const StyledComment = styled.article`
         }
       }
     }
-
     .comment-text {
       margin-top: 12px;
       font-size: 12px;

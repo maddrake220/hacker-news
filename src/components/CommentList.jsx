@@ -12,10 +12,10 @@ const CommentList = ({ comments, loading }) => {
         <div>
           {comments &&
             comments.slice(0, 10).map((v) => (
-              <>
+              <div>
                 <Comment comment={v.data} />
                 <ReplyComment responseTo={v.data.id} dth={0} />
-              </>
+              </div>
             ))}
         </div>
       )}

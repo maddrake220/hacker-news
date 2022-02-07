@@ -5,6 +5,7 @@ import { substract } from "../utils/DateCalculation";
 import UserIcon from "../assets/icon-user.png";
 import TimeIcon from "../assets/icon-time.png";
 import CommentInfo from "./CommentInfo";
+import UserInfoModal from "./UserInfoModal";
 const NewStory = ({ story }) => {
   const {
     data: { id, title, score, by, time, url, descendants },
@@ -14,9 +15,7 @@ const NewStory = ({ story }) => {
   return (
     <StyledStory href={url}>
       <a href={url} target="_blank" rel="noreferrer">
-        <span className="url">
-          {url && url.length > 46 ? <>{url.slice(0, 46)}...</> : url}
-        </span>
+        <span className="url">{url && url.split("/")[2]}</span>
         <div className="story-title">
           <p>
             {title && title.length > 60 ? <>{title.slice(0, 60)}...</> : title}
@@ -28,8 +27,7 @@ const NewStory = ({ story }) => {
       </div>
       <div className="story-info">
         <div className="story-user">
-          <img src={UserIcon} alt="" />
-          <span>{by}</span>
+          <UserInfoModal by={by} />
         </div>
         <div className="story-time">
           <img src={TimeIcon} alt="" />

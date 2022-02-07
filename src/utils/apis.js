@@ -28,6 +28,12 @@ export const getComments = async (id) => {
   }
 };
 
+export const getUser = async (id) => {
+  try {
+    const user = await axios.get(`${BASE_API_URL}/user/${id}.json`);
+    return user;
+  } catch (error) {}
+};
 // export const getStories = async (type) => {
 //   try {
 //     const { data: storyIds } = await axios.get(

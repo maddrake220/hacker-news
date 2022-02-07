@@ -1,5 +1,6 @@
 import dayjs from "dayjs";
-export const substract = (from) => {
+import { TYPE_USER } from "./constants";
+export const substract = (from, type) => {
   const date = dayjs();
   const diffYear = date.diff(from * 1000, "y");
   const diffMonth = date.diff(from * 1000, "M");
@@ -15,12 +16,12 @@ export const substract = (from) => {
           ? diffDay === 0
             ? diffHour === 0
               ? diffMinute === 0
-                ? `${diffSecond}s`
-                : `${diffMinute}m`
-              : `${diffHour}h`
-            : `${diffDay}d`
-          : `${diffWeek}w`
-        : `${diffMonth}m`
-      : `${diffYear}y`;
+                ? `${diffSecond}${type === TYPE_USER ? " seconds ago" : "s"}`
+                : `${diffMinute}${type === TYPE_USER ? " minutes ago" : "m"}`
+              : `${diffHour}${type === TYPE_USER ? " hours ago" : "h"}`
+            : `${diffDay}${type === TYPE_USER ? " days ago" : "d"}`
+          : `${diffWeek}${type === TYPE_USER ? " weeks ago" : "w"}`
+        : `${diffMonth}${type === TYPE_USER ? " months ago" : "M"}`
+      : `${diffYear}${type === TYPE_USER ? " years ago" : "Y"}`;
   return result;
 };

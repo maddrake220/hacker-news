@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Loading from "./Loading";
-import Search from "./Search";
+import SearchInput from "./SearchInput";
 import Story from "./Story";
 import DateTopDay from "./DateTopDay";
 import SwiperDateTop from "./SwiperDateTop";
@@ -19,7 +19,7 @@ const TopList = ({ loading, list, getData }) => {
         <img className="useravatar" src={USER_AVATAR} alt="useravatar"></img>
       </header>
 
-      <Search />
+      <SearchInput />
       <DateTopDay />
       {loading ? (
         <>

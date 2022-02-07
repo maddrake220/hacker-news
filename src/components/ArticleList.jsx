@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Pagination from "./Pagination";
 import Recent from "./Recent";
+import SearchButton from "./SearchButton";
 import TrendingNow from "./TrendingNow";
+import UserInfoButton from "./UserInfoButton";
 
 const ArticleList = ({
   loading,
@@ -23,9 +25,13 @@ const ArticleList = ({
     getDataTrending();
   }, [getDataTrending]);
   return (
-    <StyledArticleList>
+    <StyledArticleList id="article">
       <header>
         <h2>Article</h2>
+        <div className="menu-bar">
+          <SearchButton />
+          <UserInfoButton />
+        </div>
       </header>
       <main>
         <TrendingNow trendingList={trendingList} />
@@ -62,6 +68,17 @@ const StyledArticleList = styled.section`
       line-height: 29px;
       letter-spacing: -0.02em;
       color: rgba(196, 196, 196, 0.52);
+    }
+    > .menu-bar {
+      position: absolute;
+      right: 19px;
+      top: 43px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      > * {
+        margin-left: 19px;
+      }
     }
   }
 `;
