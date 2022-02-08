@@ -1,5 +1,7 @@
+import JobsContainer from "../containers/JobsContainer";
+
 const Jobs = () => {
-  return <div>Jobs</div>;
+  return <JobsContainer />;
 };
 
 export default Jobs;

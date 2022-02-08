@@ -44,6 +44,8 @@ const UserInfoModal = ({ by, isIcon, isOwnUser = false }) => {
             width: "20px",
             height: "20px",
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
           }}
         >
           <img src={UserInfoIcon} alt="" />

@@ -35,7 +35,7 @@ const Pagination = ({ currentPage, pages, paginate }) => {
         style={{ width: "150px" }}
       >
         {pages &&
-          pages.slice(0, 50).map((number) => (
+          pages.map((number) => (
             <SwiperSlide>
               <span
                 className={`page-link ${

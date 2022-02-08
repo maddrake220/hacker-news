@@ -1,19 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import JobsRecent from "./JobsRecent";
 import Pagination from "./Pagination";
-import Recent from "./Recent";
 import SearchButton from "./SearchButton";
-import TrendingNow from "./TrendingNow";
 import UserInfoButton from "./UserInfoButton";
 
-const ArticleList = ({
-  loading,
-  pages,
-  list,
-  getData,
-  getDataTrending,
-  trendingList,
-}) => {
+const JobsList = ({ loading, pages, list, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -21,35 +13,28 @@ const ArticleList = ({
     getData(currentPage);
   }, [getData, currentPage]);
 
-  useEffect(() => {
-    getDataTrending();
-  }, [getDataTrending]);
   return (
-    <StyledArticleList>
+    <StyledJobsList>
       <header>
-        <h2>Article</h2>
+        <h2>Jobs</h2>
         <div className="menu-bar">
           <SearchButton />
           <UserInfoButton />
         </div>
       </header>
       <main>
-        <TrendingNow trendingList={trendingList} />
-        <div className="horizontal-bar">
-          <div></div>
-        </div>
-        <Recent loading={loading} list={list} />
+        <JobsRecent loading={loading} list={list} />
         <Pagination
           currentPage={currentPage}
           pages={pages}
           paginate={paginate}
         />
       </main>
-    </StyledArticleList>
+    </StyledJobsList>
   );
 };
 
-const StyledArticleList = styled.section`
+const StyledJobsList = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,4 +78,4 @@ const StyledArticleList = styled.section`
     }
   }
 `;
-export default ArticleList;
+export default JobsList;

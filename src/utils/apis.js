@@ -63,12 +63,12 @@ export const getStories = async (type, start, end) => {
   }
 };
 
-export const getStoriesIds = async (type) => {
+export const getStoriesIds = async (type, pagePerView) => {
   try {
     const stories = await axios.get(`${BASE_API_URL}/${type}stories.json`);
 
     const pages = stories.data
-      .filter((_, index) => index % 6 === 0)
+      .filter((_, index) => index % pagePerView === 0)
       .map((_, index) => index + 1);
     return pages;
   } catch (error) {

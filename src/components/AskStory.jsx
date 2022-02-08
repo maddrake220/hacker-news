@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import ArticleScoreBar from "./ArticleScoreBar";
-import CommentIcon from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
-import UserIcon from "../assets/icon-user.png";
 import TimeIcon from "../assets/icon-time.png";
 import CommentInfo from "./CommentInfo";
 import UserInfoModal from "./UserInfoModal";
-const NewStory = ({ story }) => {
+const AskStory = ({ story }) => {
   const {
     data: { id, title, score, by, time, url, descendants },
   } = story;
@@ -23,7 +21,7 @@ const NewStory = ({ story }) => {
         </div>
       </a>
       <div className="score-bar">
-        <ArticleScoreBar score={score} />
+        <ArticleScoreBar score={score} barType="ask-bar" />
       </div>
       <div className="story-info">
         <div className="story-user">
@@ -44,13 +42,13 @@ const NewStory = ({ story }) => {
     </StyledStory>
   );
 };
-export default NewStory;
+export default AskStory;
 
 const StyledStory = styled.article`
   color: #fff;
   width: 350px;
-  height: 124px;
-  margin-bottom: 49px;
+  height: 99px;
+  margin-bottom: 24px;
   position: relative;
   font-family: "Pretendard Variable";
   font-style: normal;
@@ -67,7 +65,7 @@ const StyledStory = styled.article`
     line-height: 24px;
   }
   .score-bar {
-    margin-top: 9px;
+    margin-top: 8px;
   }
   .story-info {
     position: absolute;

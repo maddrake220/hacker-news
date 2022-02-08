@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { SCORE_MAX_VALUE } from "../utils/constants";
 
 const ScoreBar = ({ score, barType }) => {
   return (
@@ -9,7 +8,7 @@ const ScoreBar = ({ score, barType }) => {
       </div>
       <div className={`score ${barType}`}>{score}</div>
       <div className={`progress-bar ${barType}`}>
-        <div className={`progress`} />
+        <div className={`progress ${barType}`} />
       </div>
     </StyledScoreBar>
   );
@@ -18,11 +17,9 @@ const ScoreBar = ({ score, barType }) => {
 export default ScoreBar;
 
 const StyledScoreBar = styled.div`
-  position: absolute;
   font-style: "Pretendard Variable";
   display: flex;
   align-items: center;
-
   > .progress-icon {
     border: 2px solid rgba(255, 255, 255, 0.87);
     width: 15px;
@@ -32,9 +29,19 @@ const StyledScoreBar = styled.div`
     align-items: center;
     justify-content: center;
     position: relative;
-    color: black;
+    color: rgba(255, 255, 255, 0.87);
+    &.ask-trend-bar {
+      border: none;
+      background-color: #ff6666;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: black;
+    }
     > span {
-      color: rgba(255, 255, 255, 0.87);
       font-weight: 700;
       font-size: 14px;
     }
@@ -52,6 +59,9 @@ const StyledScoreBar = styled.div`
     line-height: 12px;
     color: rgba(255, 255, 255, 0.87);
     &.trending {
+      display: none;
+    }
+    &.ask-bar {
       display: none;
     }
   }
@@ -82,6 +92,14 @@ const StyledScoreBar = styled.div`
         font-weight: 400;
         font-size: 10px;
         line-height: 12px;
+      }
+      &.ask-trend-bar {
+        background: linear-gradient(
+          90deg,
+          #ff9696 0%,
+          #ff0303 66.28%,
+          #ff4949 129.85%
+        );
       }
     }
   }
