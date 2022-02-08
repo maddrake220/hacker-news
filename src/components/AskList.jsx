@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import useSearch from "../hooks/useSearch";
 import AskRecent from "./AskRecent";
 import AskTrending from "./AskTrending";
 import Pagination from "./Pagination";
+import Search from "./Search";
 import SearchButton from "./SearchButton";
-import TrendingNow from "./TrendingNow";
 import UserInfoButton from "./UserInfoButton";
 
 const AskList = ({
@@ -16,7 +17,7 @@ const AskList = ({
   trendingList,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
@@ -26,29 +27,35 @@ const AskList = ({
     getDataTrending();
   }, [getDataTrending]);
   return (
-    <StyledAskList>
-      <header>
-        <h2>Ask</h2>
-        <div className="menu-bar">
-          <SearchButton />
-          <UserInfoButton />
-        </div>
-      </header>
-      <main>
-        {trendingList.map((item) => (
-          <AskTrending item={item} />
-        ))}
-        <div className="horizontal-bar">
-          <div></div>
-        </div>
-        <AskRecent loading={loading} list={list} />
-        <Pagination
-          currentPage={currentPage}
-          pages={pages}
-          paginate={paginate}
-        />
-      </main>
-    </StyledAskList>
+    <>
+      {isSearchOn ? (
+        <Search onCloseHandler={onCloseHandler} />
+      ) : (
+        <StyledAskList>
+          <header>
+            <h2>Ask</h2>
+            <div className="menu-bar">
+              <SearchButton onClick={onOpenHandler} />
+              <UserInfoButton />
+            </div>
+          </header>
+          <main>
+            {trendingList.map((item) => (
+              <AskTrending item={item} />
+            ))}
+            <div className="horizontal-bar">
+              <div></div>
+            </div>
+            <AskRecent loading={loading} list={list} />
+            <Pagination
+              currentPage={currentPage}
+              pages={pages}
+              paginate={paginate}
+            />
+          </main>
+        </StyledAskList>
+      )}
+    </>
   );
 };
 

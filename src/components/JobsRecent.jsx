@@ -22,7 +22,7 @@ const JobsRecent = ({ loading, list }) => {
 };
 
 const StyledRecent = styled.section`
-  height: 736px;
+  height: 750px;
   position: relative;
   display: flex;
   align-items: center;

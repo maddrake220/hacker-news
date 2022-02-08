@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import useSearch from "../hooks/useSearch";
 import Pagination from "./Pagination";
 import Recent from "./Recent";
 import SearchButton from "./SearchButton";
 import TrendingNow from "./TrendingNow";
 import UserInfoButton from "./UserInfoButton";
-
+import Search from "./Search";
 const ShowList = ({
   loading,
   pages,
@@ -15,7 +16,7 @@ const ShowList = ({
   trendingList,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
@@ -25,27 +26,33 @@ const ShowList = ({
     getDataTrending();
   }, [getDataTrending]);
   return (
-    <StyledShowList>
-      <header>
-        <h2>Show</h2>
-        <div className="menu-bar">
-          <SearchButton />
-          <UserInfoButton />
-        </div>
-      </header>
-      <main>
-        <TrendingNow trendingList={trendingList} />
-        <div className="horizontal-bar">
-          <div></div>
-        </div>
-        <Recent loading={loading} list={list} />
-        <Pagination
-          currentPage={currentPage}
-          pages={pages}
-          paginate={paginate}
-        />
-      </main>
-    </StyledShowList>
+    <>
+      {isSearchOn ? (
+        <Search onCloseHandler={onCloseHandler} />
+      ) : (
+        <StyledShowList>
+          <header>
+            <h2>Show</h2>
+            <div className="menu-bar">
+              <SearchButton onClick={onOpenHandler} />
+              <UserInfoButton />
+            </div>
+          </header>
+          <main>
+            <TrendingNow trendingList={trendingList} />
+            <div className="horizontal-bar">
+              <div></div>
+            </div>
+            <Recent loading={loading} list={list} />
+            <Pagination
+              currentPage={currentPage}
+              pages={pages}
+              paginate={paginate}
+            />
+          </main>
+        </StyledShowList>
+      )}
+    </>
   );
 };
 

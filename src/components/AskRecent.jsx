@@ -22,7 +22,7 @@ const AskRecent = ({ loading, list }) => {
 };
 
 const StyledAskRecent = styled.section`
-  height: 453px;
+  height: 430px;
   position: relative;
   display: flex;
   align-items: center;

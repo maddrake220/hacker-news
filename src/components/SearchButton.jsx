@@ -1,7 +1,12 @@
 import SearchIcon from "../assets/SearchIcon.png";
-const SearchButton = () => {
+const SearchButton = ({ onClick }) => {
   return (
-    <img src={SearchIcon} alt="" style={{ width: "20px", height: "20px" }} />
+    <img
+      src={SearchIcon}
+      alt=""
+      style={{ width: "20px", height: "20px" }}
+      onClick={onClick}
+    />
   );
 };
 

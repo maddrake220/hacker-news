@@ -1,36 +1,44 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import useSearch from "../hooks/useSearch";
 import JobsRecent from "./JobsRecent";
 import Pagination from "./Pagination";
+import Search from "./Search";
 import SearchButton from "./SearchButton";
 import UserInfoButton from "./UserInfoButton";
 
 const JobsList = ({ loading, pages, list, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
-
+  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
   }, [getData, currentPage]);
 
   return (
-    <StyledJobsList>
-      <header>
-        <h2>Jobs</h2>
-        <div className="menu-bar">
-          <SearchButton />
-          <UserInfoButton />
-        </div>
-      </header>
-      <main>
-        <JobsRecent loading={loading} list={list} />
-        <Pagination
-          currentPage={currentPage}
-          pages={pages}
-          paginate={paginate}
-        />
-      </main>
-    </StyledJobsList>
+    <>
+      {isSearchOn ? (
+        <Search onCloseHandler={onCloseHandler} />
+      ) : (
+        <StyledJobsList>
+          <header>
+            <h2>Jobs</h2>
+            <div className="menu-bar">
+              <SearchButton onClick={onOpenHandler} />
+              <UserInfoButton />
+            </div>
+          </header>
+          <main>
+            <JobsRecent loading={loading} list={list} />
+            <Pagination
+              currentPage={currentPage}
+              pages={pages}
+              paginate={paginate}
+            />
+          </main>
+        </StyledJobsList>
+      )}
+    </>
   );
 };
 

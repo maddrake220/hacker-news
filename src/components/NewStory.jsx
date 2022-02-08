@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import ArticleScoreBar from "./ArticleScoreBar";
-import CommentIcon from "../assets/Main1stCommentIcon.png";
 import { substract } from "../utils/DateCalculation";
-import UserIcon from "../assets/icon-user.png";
 import TimeIcon from "../assets/icon-time.png";
 import CommentInfo from "./CommentInfo";
 import UserInfoModal from "./UserInfoModal";

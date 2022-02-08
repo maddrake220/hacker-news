@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import SEARCHICON from "../assets/SearchIcon.png";
-const Search = () => {
+const SearchInput = () => {
   return (
     <InputContainer>
       <label></label>
@@ -9,7 +9,7 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SearchInput;
 
 const InputContainer = styled.div`
   position: relative;
