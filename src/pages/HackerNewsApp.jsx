@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Article from "./Article";
 import Ask from "./Ask";
 import Jobs from "./Jobs";

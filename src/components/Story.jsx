@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import ScoreBar from "./ScoreBar";
-import CommentIcon from "../assets/Main1stCommentIcon.png";
 import CommentInfo from "./CommentInfo";
 const Story = ({ story, ranking }) => {
   const {

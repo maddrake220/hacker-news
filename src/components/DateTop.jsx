@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import USER_ICON from "../assets/Main1stUserIcon.png";
 import TIME_ICON from "../assets/Main1stTimeIcon.png";
 import { substract } from "../utils/DateCalculation";
 import ScoreBar from "./ScoreBar";

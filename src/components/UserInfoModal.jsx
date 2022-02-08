@@ -26,11 +26,6 @@ const UserInfoModal = ({ by, isIcon, isOwnUser = false }) => {
   function openModal() {
     setIsOpen(true);
   }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
-
   function closeModal() {
     setIsOpen(false);
   }
@@ -55,7 +50,6 @@ const UserInfoModal = ({ by, isIcon, isOwnUser = false }) => {
       )}
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="User Modal"
