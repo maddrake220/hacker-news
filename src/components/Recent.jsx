@@ -23,7 +23,7 @@ const Recent = ({ loading, list }) => {
 
 const StyledRecent = styled.section`
   margin-top: 20px;
-  height: 494px;
+  height: 436px;
   position: relative;
   display: flex;
   align-items: center;

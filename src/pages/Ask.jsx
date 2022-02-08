@@ -1,5 +1,7 @@
+import AskContainer from "../containers/AskContainer";
+
 const Ask = () => {
-  return <div>Ask</div>;
+  return <AskContainer />;
 };
 
 export default Ask;

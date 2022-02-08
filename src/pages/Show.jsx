@@ -1,5 +1,7 @@
+import ShowContainer from "../containers/ShowContainer";
+
 const Show = () => {
-  return <div>Show</div>;
+  return <ShowContainer />;
 };
 
 export default Show;

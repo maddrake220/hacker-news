@@ -11,13 +11,12 @@ const Story = ({ story, ranking }) => {
       <a href={url} target="_blank" rel="noreferrer">
         <div className="story-title">
           <span>{ranking && ranking}</span>
-          <p>
-            {title.slice(0, 68)}
-            {title.length > 68 && <>...</>}
-          </p>
+          <p>{title}</p>
         </div>
       </a>
-      <ScoreBar score={score} barType="story-bar" />
+      <div className="score-bar">
+        <ScoreBar score={score} barType="story-bar" />
+      </div>
       <div className="story-comment">
         <CommentInfo id={id} descendants={descendants} />
       </div>
@@ -29,13 +28,14 @@ export default Story;
 const StyledStory = styled.article`
   color: #fff;
   width: 390px;
-  height: 90px;
   margin-top: 5px;
   background-color: #232429;
   position: relative;
   font-family: "Pretendard Variable";
   .story-title {
-    margin: 16px 59px 0 35px;
+    margin-left: 35px;
+    margin-right: 59px;
+    padding-bottom: 36px;
     > span {
       position: absolute;
       top: 16px;
@@ -52,6 +52,9 @@ const StyledStory = styled.article`
       line-height: 19.2px;
       letter-spacing: 2%;
     }
+  }
+  .score-bar {
+    padding-top: 6px;
   }
   .story-comment {
     position: absolute;

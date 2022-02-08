@@ -1,42 +1,45 @@
 import styled from "styled-components";
 import { substract } from "../utils/DateCalculation";
-import UserIcon from "../assets/icon-user.png";
 import ClockIcon from "../assets/icon-time.png";
-import CommentIcon from "../assets/Main1stCommentIcon.png";
 import ArticleScoreBar from "./ArticleScoreBar";
 import CommentInfo from "./CommentInfo";
+import UserInfoModal from "./UserInfoModal";
 const Trending = ({ item }) => {
   const {
     data: { id, url, title, score, by, time, descendants },
   } = item;
   const diff = substract(time);
+  console.log(score);
   return (
     <StyledTrending>
-      <div className="url">
-        <span>{url && url.split("/")[2]}</span>
-      </div>
-      <div className="title">
-        <span>{title}</span>
-      </div>
-      <div className="score-bar">
-        <ArticleScoreBar score={score} barType="trending" />
-      </div>
-      <div className="story-info">
-        <div>
-          <img src={UserIcon} alt="" />
-          <span>{by}</span>
+      <div className="trending-wrap">
+        <a href={url} target="_blank" rel="noreferrer">
+          <div className="url">
+            <span>{url && url.split("/")[2]}</span>
+          </div>
+          <div className="title">
+            <span>{title}</span>
+          </div>
+        </a>
+        <div className="score-bar">
+          <ArticleScoreBar score={score} barType="trending" />
         </div>
-        <div>
-          <img src={ClockIcon} alt="" />
-          <span>{diff}</span>
+        <div className="story-info">
+          <div>
+            <UserInfoModal by={by} />
+          </div>
+          <div>
+            <img src={ClockIcon} alt="" />
+            <span>{diff}</span>
+          </div>
         </div>
-      </div>
-      <div className="comments">
-        <CommentInfo
-          id={id}
-          descendants={descendants}
-          style={{ color: "rgba(196, 196, 196, 0.52)" }}
-        />
+        <div className="comments">
+          <CommentInfo
+            id={id}
+            descendants={descendants}
+            style={{ color: "rgba(196, 196, 196, 0.52)" }}
+          />
+        </div>
       </div>
     </StyledTrending>
   );
@@ -61,7 +64,7 @@ const StyledTrending = styled.div`
   line-height: 17px;
   letter-spacing: -0.02em;
   color: rgba(255, 255, 255, 0.87);
-  > div {
+  .trending-wrap {
     margin-left: 16px;
   }
   .url {

@@ -6,7 +6,7 @@ import SearchButton from "./SearchButton";
 import TrendingNow from "./TrendingNow";
 import UserInfoButton from "./UserInfoButton";
 
-const ArticleList = ({
+const ShowList = ({
   loading,
   pages,
   list,
@@ -25,9 +25,9 @@ const ArticleList = ({
     getDataTrending();
   }, [getDataTrending]);
   return (
-    <StyledArticleList>
+    <StyledShowList>
       <header>
-        <h2>Article</h2>
+        <h2>Show</h2>
         <div className="menu-bar">
           <SearchButton />
           <UserInfoButton />
@@ -45,11 +45,11 @@ const ArticleList = ({
           paginate={paginate}
         />
       </main>
-    </StyledArticleList>
+    </StyledShowList>
   );
 };
 
-const StyledArticleList = styled.section`
+const StyledShowList = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,4 +94,4 @@ const StyledArticleList = styled.section`
     }
   }
 `;
-export default ArticleList;
+export default ShowList;

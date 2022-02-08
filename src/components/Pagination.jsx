@@ -7,6 +7,7 @@ const Pagination = ({ currentPage, pages, paginate }) => {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+  console.log(pages, pages, pages);
   return (
     <StyledPagination>
       <img
@@ -34,10 +35,12 @@ const Pagination = ({ currentPage, pages, paginate }) => {
         style={{ width: "150px" }}
       >
         {pages &&
-          pages.slice(0, 35).map((number) => (
+          pages.slice(0, 50).map((number) => (
             <SwiperSlide>
               <span
-                className={`page-link ${currentPage === number && `active`}`}
+                className={`page-link ${
+                  currentPage === number ? `active` : ``
+                }`}
                 onClick={() => {
                   paginate(number);
                 }}
@@ -66,7 +69,6 @@ const StyledPagination = styled.nav`
   justify-content: center;
   margin-left: 16px;
   margin-top: 10px;
-
   font-weight: 300;
   font-size: 14px;
   line-height: 17px;

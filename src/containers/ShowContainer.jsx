@@ -1,4 +1,3 @@
-import ArticleList from "../components/ArticleList";
 import {
   getStoriesIdsThunk,
   getStoriesThunk,
@@ -7,22 +6,25 @@ import {
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { PAGE_PER_VIEW, TYPE_NEW } from "../utils/constants";
-const ArticleContainer = () => {
-  const { data, pages, loading, trending } = useSelector((state) => state.news);
-
+import { PAGE_PER_VIEW, TYPE_SHOW } from "../utils/constants";
+import ShowList from "../components/ShowList";
+const ShowContainer = () => {
+  const { data, pages, loading, trending } = useSelector(
+    (state) => state.shows
+  );
+  console.log(trending);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getStoriesIdsThunk(TYPE_NEW));
+    dispatch(getStoriesIdsThunk(TYPE_SHOW));
   }, [dispatch]);
   const getDataTrending = useCallback(() => {
-    dispatch(getStoriesTrendingThunk(TYPE_NEW, 0, 50));
+    dispatch(getStoriesTrendingThunk(TYPE_SHOW, 0, 50));
   }, [dispatch]);
   const getData = useCallback(
     (currentPage) => {
       dispatch(
         getStoriesThunk(
-          TYPE_NEW,
+          TYPE_SHOW,
           (currentPage - 1) * PAGE_PER_VIEW,
           (currentPage - 1) * PAGE_PER_VIEW + PAGE_PER_VIEW
         )
@@ -31,7 +33,7 @@ const ArticleContainer = () => {
     [dispatch]
   );
   return (
-    <ArticleList
+    <ShowList
       loading={loading}
       pages={pages}
       list={data}
@@ -42,4 +44,4 @@ const ArticleContainer = () => {
   );
 };
 
-export default ArticleContainer;
+export default ShowContainer;
