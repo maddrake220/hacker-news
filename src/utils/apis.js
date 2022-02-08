@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_API_URL, PAGE_PER_VIEW } from "./constants";
+import { BASE_API_URL } from "./constants";
 
 // export const getStory = async (id) => {
 //   try {
