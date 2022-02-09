@@ -43,9 +43,7 @@ const AskList = ({
             {trendingList.map((item) => (
               <AskTrending item={item} />
             ))}
-            <div className="horizontal-bar">
-              <div></div>
-            </div>
+
             <AskRecent loading={loading} list={list} />
             <Pagination
               currentPage={currentPage}
@@ -64,7 +62,7 @@ const StyledAskList = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 390px;
+  width: 395px;
   color: rgba(255, 255, 255, 0.87);
   font-family: "Pretendard Variable";
   font-style: normal;

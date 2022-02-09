@@ -44,7 +44,6 @@ export default function reducer(state = initialState, action) {
     };
   }
   if (action.type === GET_COMMENTS_SUCCESS) {
-    console.log(action);
     return {
       ...state,
       loading: false,

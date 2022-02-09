@@ -7,7 +7,6 @@ const Pagination = ({ currentPage, pages, paginate }) => {
   const swiperRef = useRef(null);
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-  console.log(pages, pages, pages);
   return (
     <StyledPagination>
       <img

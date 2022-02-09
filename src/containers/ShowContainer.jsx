@@ -12,7 +12,6 @@ const ShowContainer = () => {
   const { data, pages, loading, trending } = useSelector(
     (state) => state.shows
   );
-  console.log(trending);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getStoriesIdsThunk(TYPE_SHOW));

@@ -4,12 +4,12 @@ import styled from "styled-components";
 import { RANKING_LIST_TEXT, UPDATE_BY_DATE_TEXT } from "../utils/constants";
 import Badge_Icon from "../assets/Badge1.png";
 import ClockTime_Icon from "../assets/ClockTime1.png";
-const TodayTopDate = () => {
-  const now = dayjs();
+const TodayTopDate = ({ slideState }) => {
+  const date = dayjs().subtract(slideState, "day");
   dayjs.locale("ko");
   return (
-    <DateTopDayContainer isToday={false}>
-      <h2>{now.format(`YYYY/M/DD/(ddd)`)}</h2>
+    <DateTopDayContainer isToday={slideState === 0 ? true : false}>
+      <h2>{date.format(`YYYY/M/DD/(ddd)`)}</h2>
       <aside>
         <div className="ranking-stories">
           <img src={Badge_Icon} alt="" />

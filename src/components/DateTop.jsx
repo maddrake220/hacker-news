@@ -6,15 +6,13 @@ import CommentInfo from "./CommentInfo";
 import UserInfoModal from "./UserInfoModal";
 
 const DateTop = ({ story, ranking }) => {
-  const {
-    data: { id, title, score, url, by, time, descendants },
-  } = story;
+  const { id, title, score, url, by, time, descendants } = story;
   const diffTime = substract(time);
 
   return (
     <StyledDateTop dir="ltr">
       <div className="date-top-url">
-        <span>{url && url.length > 35 ? <>{url.slice(0, 35)}...</> : url}</span>
+        <span>{url && url.split("/")[2]}</span>
       </div>
       <div className="ranking">
         <span className="cannot-dragging">{ranking}</span>

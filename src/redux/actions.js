@@ -12,7 +12,7 @@ import {
   TYPE_SHOW,
   TYPE_TOP,
 } from "../utils/constants";
-import { sortStoriesByScore } from "../utils/sortStories";
+import { groupStories, sortStoriesByScore } from "../utils/sortStories";
 
 export const GET_STORIES_START = "GET_STORIES_START";
 export const GET_STORIES_SUCCESS = "GET_STORIES_SUCCESS";
@@ -399,7 +399,7 @@ export function getStoriesThunk(type, start, end) {
         try {
           dispatch(getTopStoriesStart());
           let res = await getStories(type, start, end);
-          res = sortStoriesByScore(res).slice(0, 5);
+          res = groupStories(res, "date");
           dispatch(getTopStoriesSuccess(res));
         } catch (e) {
           dispatch(getTopStoriesFail());

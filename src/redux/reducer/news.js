@@ -27,7 +27,6 @@ export default function reducer(state = initialState, action) {
     };
   }
   if (action.type === GET_STORIES_SUCCESS) {
-    console.log(action);
     return {
       ...state,
       loading: false,
@@ -49,7 +48,6 @@ export default function reducer(state = initialState, action) {
     };
   }
   if (action.type === GET_STORIES_TRENDING_SUCCESS) {
-    console.log(action);
     return {
       ...state,
       loading: false,

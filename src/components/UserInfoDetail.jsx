@@ -5,7 +5,6 @@ import { substract } from "../utils/DateCalculation";
 import X_ICON from "../assets/x-icon.png";
 const UserInfoDetail = ({ by, closeModal }) => {
   const [user, isLoading] = GetUserFetcher(by);
-  console.log(user);
   return (
     <StyledUserInfoDetail>
       {isLoading ? (

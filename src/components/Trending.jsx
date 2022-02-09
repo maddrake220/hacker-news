@@ -9,7 +9,6 @@ const Trending = ({ item }) => {
     data: { id, url, title, score, by, time, descendants },
   } = item;
   const diff = substract(time);
-  console.log(score);
   return (
     <StyledTrending>
       <div className="trending-wrap">

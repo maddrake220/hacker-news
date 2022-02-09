@@ -8,7 +8,7 @@ const TopContainer = () => {
   const { data, loading } = useSelector((state) => state.top);
   const dispatch = useDispatch();
   const getData = useCallback(() => {
-    dispatch(getStoriesThunk(TYPE_TOP, 0, 30));
+    dispatch(getStoriesThunk(TYPE_TOP, 0, 50));
   }, [dispatch]);
 
   return <TopList loading={loading} list={data} getData={getData} />;

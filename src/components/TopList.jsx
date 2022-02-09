@@ -3,14 +3,17 @@ import Loading from "./Loading";
 import SearchInput from "./SearchInput";
 import Story from "./Story";
 import DateTopDay from "./DateTopDay";
-import SwiperDateTop from "./SwiperDateTop";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import LOGO from "../assets/LOGO.png";
 import USER_AVATAR from "../assets/UserAccountProfile1.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import DateTop from "./DateTop";
 const TopList = ({ loading, list, getData }) => {
+  const [slideState, setSlideState] = useState(0);
   useEffect(() => {
     getData();
   }, [getData]);
+  //list.forEach((v) => v[1].sort((a, b) => b.score - a.score));
   return (
     <StyledTopList>
       <header>
@@ -20,23 +23,51 @@ const TopList = ({ loading, list, getData }) => {
       </header>
 
       <SearchInput />
-      <DateTopDay />
+      <DateTopDay slideState={slideState} />
       {loading ? (
         <>
           <Loading />
         </>
       ) : (
-        <ul>
-          {list?.map((story, index) => (
-            <li>
-              {index === 0 ? (
-                <SwiperDateTop key={index} story={story} ranking={index + 1} />
-              ) : (
-                <Story key={index} story={story} ranking={index + 1} />
-              )}
-            </li>
-          ))}
-        </ul>
+        <>
+          <div className="date-top">
+            <Swiper
+              slidesPerView={1}
+              onSlideChange={(swiper) => {
+                setSlideState(swiper.activeIndex);
+              }}
+              style={{ width: "390px", marginBottom: "6px" }}
+              dir="rtl"
+            >
+              {list?.map((story, i) => (
+                <div>
+                  {story[1].map((v, index) => (
+                    <>
+                      {index === 0 && i < 3 && (
+                        <SwiperSlide>
+                          <DateTop story={v} ranking={index + 1} />
+                        </SwiperSlide>
+                      )}
+                    </>
+                  ))}
+                </div>
+              ))}
+            </Swiper>
+          </div>
+          <div className="top-list">
+            {list?.map((story, i) => (
+              <ul>
+                {story[1].slice(0, 5).map((v, index) => (
+                  <li>
+                    {index !== 0 && i < 3 && i === slideState && (
+                      <Story story={v} ranking={index + 1} />
+                    )}
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
+        </>
       )}
     </StyledTopList>
   );
@@ -65,8 +96,9 @@ const StyledTopList = styled.section`
       right: 28.56px;
     }
   }
-  > ul {
-    height: 694px;
+
+  .top-list {
+    height: 326px;
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;

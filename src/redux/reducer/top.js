@@ -13,13 +13,11 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   if (action.type === GET_TOP_STORIES_START) {
     return {
-      ...state,
       loading: true,
       error: null,
     };
   }
   if (action.type === GET_TOP_STORIES_SUCCESS) {
-    console.log(action);
     return {
       ...state,
       loading: false,

@@ -18,6 +18,6 @@ export const UPDATE_BY_DATE_TEXT = "매일 6AM 업데이트";
 
 export const SCORE_MAX_VALUE = "500";
 
-export const PAGE_PER_VIEW = 6;
+export const PAGE_PER_VIEW = 7;
 
-export const JOBS_PAGE_PER_VIEW = 11;
+export const JOBS_PAGE_PER_VIEW = 10;

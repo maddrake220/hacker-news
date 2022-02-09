@@ -2,9 +2,7 @@ import styled from "styled-components";
 import ScoreBar from "./ScoreBar";
 import CommentInfo from "./CommentInfo";
 const Story = ({ story, ranking }) => {
-  const {
-    data: { id, title, score, url, descendants },
-  } = story;
+  const { id, title, score, url, descendants } = story;
   return (
     <StyledStory href={url}>
       <a href={url} target="_blank" rel="noreferrer">
