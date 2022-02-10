@@ -62,7 +62,6 @@ const StyledArticleList = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 390px;
   color: rgba(255, 255, 255, 0.87);
   font-family: "Pretendard Variable";
   font-style: normal;
@@ -72,8 +71,8 @@ const StyledArticleList = styled.section`
     justify-content: center;
     align-items: center;
     margin-top: 46px;
-    div {
-      width: 350px;
+    > div {
+      width: 360px;
       border: 0.5px solid rgba(196, 196, 196, 0.52);
     }
   }

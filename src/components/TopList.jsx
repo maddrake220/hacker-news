@@ -36,7 +36,11 @@ const TopList = ({ loading, list, getData }) => {
               onSlideChange={(swiper) => {
                 setSlideState(swiper.activeIndex);
               }}
-              style={{ width: "390px", marginBottom: "6px" }}
+              style={{
+                width: "390px",
+                height: "41vh",
+                marginBottom: "6px",
+              }}
               dir="rtl"
             >
               {list?.map((story, i) => (
@@ -96,9 +100,8 @@ const StyledTopList = styled.section`
       right: 28.56px;
     }
   }
-
   .top-list {
-    height: 326px;
+    height: 26vh;
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;

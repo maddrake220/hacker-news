@@ -189,48 +189,37 @@ const Navigation = () => {
 
 const StyledNavigation = styled.div`
   position: fixed;
+  max-width: 412px;
   z-index: 99;
   bottom: 0;
-  width: 396px;
+  width: 100vw;
   height: 72px;
   background-color: #282828;
   color: #fff;
   display: flex;
   align-items: center;
+  justify-content: center;
   font-weight: 500;
   font-family: "Pretendard Variable";
   font-size: 8px;
   line-height: 9.6px;
-  flex-grow: 1;
   box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
   img {
     fill-opacity: "0.1";
   }
   > * {
-    width: 56px;
-    height: 56px;
-    margin-right: 8px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    :nth-child(1) {
-      margin-left: 20px;
-    }
-    :nth-child(2) {
-      margin-right: 116px;
-    }
+    align-items: center;
+    flex: 1;
     :nth-child(3) {
       width: 80px;
       height: 80px;
       background-color: #363636;
-      border-radius: 50%;
-      position: absolute;
-      bottom: 8.45px;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
+      border-radius: 999px;
       box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.25);
+      margin-bottom: 9px;
     }
   }
 `;

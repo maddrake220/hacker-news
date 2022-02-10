@@ -28,7 +28,7 @@ export default TrendingNow;
 
 const StyledTrendingNow = styled.section`
   width: 390px;
-  height: 250px;
+  height: 30vh;
   position: relative;
   > h3 {
     position: absolute;

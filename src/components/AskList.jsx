@@ -3,7 +3,6 @@ import styled from "styled-components";
 import useSearch from "../hooks/useSearch";
 import AskRecent from "./AskRecent";
 import AskTrending from "./AskTrending";
-import Pagination from "./Pagination";
 import Search from "./Search";
 import SearchButton from "./SearchButton";
 import UserInfoButton from "./UserInfoButton";
@@ -40,15 +39,18 @@ const AskList = ({
             </div>
           </header>
           <main>
-            {trendingList.map((item) => (
-              <AskTrending item={item} />
-            ))}
+            <div className="ask-trending">
+              {trendingList.map((item) => (
+                <AskTrending item={item} />
+              ))}
+            </div>
 
-            <AskRecent loading={loading} list={list} />
-            <Pagination
-              currentPage={currentPage}
+            <AskRecent
+              loading={loading}
+              list={list}
               pages={pages}
               paginate={paginate}
+              currentPage={currentPage}
             />
           </main>
         </StyledAskList>
@@ -62,20 +64,11 @@ const StyledAskList = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 395px;
   color: rgba(255, 255, 255, 0.87);
   font-family: "Pretendard Variable";
   font-style: normal;
   position: relative;
-  .horizontal-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 46px;
-    div {
-      width: 350px;
-      border: 0.5px solid rgba(196, 196, 196, 0.52);
-    }
+  .ask-trending {
   }
   > header {
     padding-top: 49px;

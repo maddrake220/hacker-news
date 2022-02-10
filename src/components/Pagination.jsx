@@ -63,6 +63,7 @@ const Pagination = ({ currentPage, pages, paginate }) => {
 };
 
 const StyledPagination = styled.nav`
+  padding-bottom: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,6 @@ const StyledPagination = styled.nav`
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.02em;
-
   .page-link {
     cursor: pointer;
     &.active {

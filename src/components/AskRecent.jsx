@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import Loading from "./Loading";
 import AskStory from "./AskStory";
+import Pagination from "./Pagination";
 
-const AskRecent = ({ loading, list }) => {
+const AskRecent = ({ loading, list, currentPage, pages, paginate }) => {
   return (
     <StyledAskRecent>
       <header>
@@ -17,12 +18,13 @@ const AskRecent = ({ loading, list }) => {
           ))}
         </div>
       )}
+      <Pagination currentPage={currentPage} pages={pages} paginate={paginate} />
     </StyledAskRecent>
   );
 };
 
 const StyledAskRecent = styled.section`
-  height: 430px;
+  height: 50vh;
   position: relative;
   display: flex;
   align-items: center;
@@ -35,7 +37,6 @@ const StyledAskRecent = styled.section`
     display: none;
   }
   > header {
-    margin-bottom: 23px;
     h3 {
       font-size: 0;
     }

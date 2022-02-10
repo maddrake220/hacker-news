@@ -27,8 +27,8 @@ const TodayTopDate = ({ slideState }) => {
 const DateTopDayContainer = styled.div`
   margin-top: 9px;
   margin-bottom: 10.54px;
-  width: 390px;
-  height: 57px;
+  width: 100%;
+  height: 60px;
   background-color: #232429;
   position: relative;
   > h2 {
@@ -44,7 +44,7 @@ const DateTopDayContainer = styled.div`
     color: ${(props) => (props.isToday ? "#96D9FF" : "#fff")};
   }
   > aside {
-    margin: 35px 20px 0 20px;
+    margin: 39px 20px 0 20px;
     font-size: 10px;
     font-weight: 400;
     font-family: "Roboto";

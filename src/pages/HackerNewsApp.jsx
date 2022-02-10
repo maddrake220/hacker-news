@@ -32,8 +32,9 @@ const HackerNewsApp = () => {
 export default HackerNewsApp;
 
 const StyledHackerNewsApp = styled.section`
-  width: 396px;
-  height: 956px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 412px;
   overflow: hidden;
   position: relative;
   background-color: #121212;
