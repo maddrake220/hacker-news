@@ -38,7 +38,6 @@ const TopList = ({ loading, list, getData }) => {
               }}
               style={{
                 width: "390px",
-                height: "41vh",
                 marginBottom: "6px",
               }}
               dir="rtl"
@@ -98,15 +97,6 @@ const StyledTopList = styled.section`
       position: absolute;
       top: 49px;
       right: 28.56px;
-    }
-  }
-  .top-list {
-    height: 26vh;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    ::-webkit-scrollbar {
-      display: none;
     }
   }
 `;

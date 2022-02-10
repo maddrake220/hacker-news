@@ -34,7 +34,7 @@ const AskTrending = ({ item }) => {
 
 const StyledAskTrending = styled.div`
   margin-top: 10px;
-  width: 100%;
+  width: 99%;
   background: #232429;
   font-family: "Pretendard Variable";
   font-style: normal;

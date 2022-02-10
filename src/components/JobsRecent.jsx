@@ -11,7 +11,7 @@ const JobsRecent = ({ loading, list }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div>
+        <div className="jobs-list">
           {list?.map((story, index) => (
             <Job key={index} story={story} />
           ))}
@@ -22,18 +22,10 @@ const JobsRecent = ({ loading, list }) => {
 };
 
 const StyledRecent = styled.section`
-  height: 77vh;
   position: relative;
   display: flex;
   align-items: center;
 
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  flex-direction: column;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   > header {
     h3 {
       font-size: 0;

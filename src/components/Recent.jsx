@@ -11,7 +11,7 @@ const Recent = ({ loading, list }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div>
+        <div className="recent-list">
           {list?.map((story, index) => (
             <NewStory key={index} story={story} />
           ))}
@@ -23,20 +23,11 @@ const Recent = ({ loading, list }) => {
 
 const StyledRecent = styled.section`
   margin-top: 20px;
-  height: 39vh;
   position: relative;
   display: flex;
   align-items: center;
 
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  flex-direction: column;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   > header {
-    margin-bottom: 44px;
     h3 {
       position: absolute;
       top: 0;
@@ -47,6 +38,13 @@ const StyledRecent = styled.section`
       letter-spacing: -0.02em;
       color: rgba(255, 255, 255, 0.87);
     }
+  }
+  .recent-list {
+    margin-top: 68px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 `;
 

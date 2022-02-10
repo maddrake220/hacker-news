@@ -33,11 +33,13 @@ export default HackerNewsApp;
 
 const StyledHackerNewsApp = styled.section`
   width: 100vw;
-  height: 100vh;
   max-width: 412px;
-  overflow: hidden;
+  min-height: 100vh;
   position: relative;
   background-color: #121212;
+  > section {
+    padding-bottom: 10vh;
+  }
   > header {
     > h1 {
       font-size: 0;

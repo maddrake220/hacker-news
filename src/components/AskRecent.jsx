@@ -12,7 +12,7 @@ const AskRecent = ({ loading, list, currentPage, pages, paginate }) => {
       {loading ? (
         <Loading />
       ) : (
-        <div>
+        <div className="ask-list">
           {list?.map((story, index) => (
             <AskStory key={index} story={story} />
           ))}
@@ -24,22 +24,17 @@ const AskRecent = ({ loading, list, currentPage, pages, paginate }) => {
 };
 
 const StyledAskRecent = styled.section`
-  height: 50vh;
   position: relative;
   display: flex;
   align-items: center;
-
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   flex-direction: column;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   > header {
     h3 {
       font-size: 0;
     }
+  }
+  .ask-list {
+    margin-top: 24px;
   }
 `;
 

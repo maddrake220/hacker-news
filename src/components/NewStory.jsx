@@ -31,13 +31,13 @@ const NewStory = ({ story }) => {
           <img src={TimeIcon} alt="" />
           <span>{diff}</span>
         </div>
-      </div>
-      <div className="story-comment">
-        <CommentInfo
-          id={id}
-          descendants={descendants}
-          style={{ color: "rgba(196, 196, 196, 0.52)" }}
-        />
+        <div className="story-comment">
+          <CommentInfo
+            id={id}
+            descendants={descendants}
+            style={{ color: "rgba(196, 196, 196, 0.52)" }}
+          />
+        </div>
       </div>
     </StyledStory>
   );
@@ -46,8 +46,7 @@ export default NewStory;
 
 const StyledStory = styled.article`
   color: #fff;
-  width: 350px;
-  height: 124px;
+  width: 90%;
   margin-bottom: 49px;
   position: relative;
   font-family: "Pretendard Variable";
@@ -68,9 +67,7 @@ const StyledStory = styled.article`
     margin-top: 9px;
   }
   .story-info {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    margin-top: 16px;
     font-size: 12px;
     line-height: 14px;
     color: rgba(196, 196, 196, 0.52);
@@ -81,17 +78,17 @@ const StyledStory = styled.article`
     .story-user {
       margin-right: 16px;
     }
-  }
-  .story-comment {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    font-size: 12px;
-    line-height: 14px;
-    display: flex;
-    justify-content: center;
-    > span {
-      margin-left: 4px;
+    .story-comment {
+      position: absolute;
+      right: 20px;
+      bottom: 0;
+      font-size: 12px;
+      line-height: 14px;
+      display: flex;
+      justify-content: center;
+      > span {
+        margin-left: 4px;
+      }
     }
   }
 `;
