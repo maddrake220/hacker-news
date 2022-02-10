@@ -15,9 +15,7 @@ const AskStory = ({ story }) => {
       <a href={url} target="_blank" rel="noreferrer">
         <span className="url">{url && url.split("/")[2]}</span>
         <div className="story-title">
-          <p>
-            {title && title.length > 60 ? <>{title.slice(0, 60)}...</> : title}
-          </p>
+          <p>{title && title}</p>
         </div>
       </a>
       <div className="score-bar">
