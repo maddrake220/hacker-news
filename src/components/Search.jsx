@@ -49,6 +49,7 @@ const Search = ({ onCloseHandler, search, setSearch, onSearchingHandler }) => {
           />
         </svg>
         <svg
+          onClick={onSearchingHandler}
           className="search-icon"
           width="24"
           height="24"

@@ -6,16 +6,16 @@ const customStyles = {
   overlay: {
     position: "fixed",
     backgroundColor: "rgba(0,0,0,0.75)",
-    width: "395px",
-    height: "860px",
+    width: "100vw",
+    height: "100%",
     zIndex: 100,
   },
   content: {
     backgroundColor: "transparent",
     top: 0,
     left: 0,
-    width: "355px",
-    height: "860px",
+    width: "100vw - 20px",
+    height: "100%",
     border: "none",
   },
 };
