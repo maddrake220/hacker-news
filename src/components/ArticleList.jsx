@@ -7,6 +7,8 @@ import Search from "./Search";
 import TrendingNow from "./TrendingNow";
 import UserInfoButton from "./UserInfoButton";
 import useSearch from "../hooks/useSearch";
+import SearchedContainer from "../containers/SearchedContainer";
+import { TYPE_NEW } from "../utils/constants";
 
 const ArticleList = ({
   loading,
@@ -17,7 +19,15 @@ const ArticleList = ({
   trendingList,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
+  const [
+    search,
+    prevSearch,
+    setSearch,
+    isSearchOn,
+    onOpenHandler,
+    onCloseHandler,
+    onSearchingHandler,
+  ] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
@@ -29,7 +39,12 @@ const ArticleList = ({
   return (
     <>
       {isSearchOn ? (
-        <Search onCloseHandler={onCloseHandler} />
+        <Search
+          onCloseHandler={onCloseHandler}
+          search={search}
+          setSearch={setSearch}
+          onSearchingHandler={onSearchingHandler}
+        />
       ) : (
         <StyledArticleList>
           <header>
@@ -39,18 +54,24 @@ const ArticleList = ({
               <UserInfoButton />
             </div>
           </header>
-          <main>
-            <TrendingNow trendingList={trendingList} />
-            <div className="horizontal-bar">
-              <div></div>
+          {prevSearch !== "" ? (
+            <div className="search-result-text">
+              <SearchedContainer type={TYPE_NEW} search={prevSearch} />
             </div>
-            <Recent loading={loading} list={list} />
-            <Pagination
-              currentPage={currentPage}
-              pages={pages}
-              paginate={paginate}
-            />
-          </main>
+          ) : (
+            <main>
+              <TrendingNow trendingList={trendingList} />
+              <div className="horizontal-bar">
+                <div></div>
+              </div>
+              <Recent loading={loading} list={list} />
+              <Pagination
+                currentPage={currentPage}
+                pages={pages}
+                paginate={paginate}
+              />
+            </main>
+          )}
         </StyledArticleList>
       )}
     </>

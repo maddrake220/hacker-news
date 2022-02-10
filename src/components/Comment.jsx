@@ -26,17 +26,18 @@ const Comment = ({ isloading, comment, dth }) => {
             <div className="comment-user">
               <UserInfoModal by={by} isIcon={false} />
             </div>
-            <div className="comment-time">
-              <TimeInfo diff={diff} />
+            <div className="comment-side">
+              <div className="comment-time">
+                <TimeInfo diff={diff} />
+              </div>
+              <img
+                className={`toggle-arrow ${toggle && "toggled"}`}
+                src={UpDownIcon}
+                alt=""
+                onClick={toggleHandler}
+              />
             </div>
-            <img
-              className={`toggle-arrow ${toggle && "toggled"}`}
-              src={UpDownIcon}
-              alt=""
-              onClick={toggleHandler}
-            />
           </div>
-
           <div
             className={`comment-text ${toggle && "toggled"}`}
             ref={textRef}
@@ -57,7 +58,6 @@ const StyledComment = styled.article`
   font-weight: normal;
   font-style: normal;
   display: flex;
-  width: 390px;
   padding-bottom: 16px;
   + .reply-comment {
     display: ${(props) => props.toggle && "none"};
@@ -71,14 +71,13 @@ const StyledComment = styled.article`
     }
   }
   .comment-wrap {
-    width: 390px;
-    margin-left: ${(props) => (props.dth ? props.dth * 16 + 20 : 20)}px;
+    margin-left: ${(props) => (props.dth ? props.dth * 16 + 30 : 30)}px;
     margin-top: 19px;
     margin-right: 20px;
+    width: 100%;
     .comment-info {
-      display: flex;
       position: relative;
-      align-items: center;
+      display: flex;
       .comment-user {
         font-weight: 500;
         font-size: 14px;
@@ -87,24 +86,26 @@ const StyledComment = styled.article`
         color: #96d9ff;
         font-family: "Pretendard Variable";
       }
-      .comment-time {
+      .comment-side {
         position: absolute;
-        top: 3px;
-        right: 44px;
-        font-size: 10px;
-        line-height: 12px;
-        color: #c0c4c7;
-      }
-      .toggle-arrow {
-        position: absolute;
-        right: 24px;
-        top: 7px;
-        &.toggled {
-          transform: rotate(180deg);
+        right: 25px;
+        display: flex;
+        align-items: center;
+        .comment-time {
+          font-size: 10px;
+          line-height: 12px;
+          color: #c0c4c7;
+        }
+        .toggle-arrow {
+          margin-left: 8px;
+          &.toggled {
+            transform: rotate(180deg);
+          }
         }
       }
     }
     .comment-text {
+      max-width: 350px;
       margin-top: 12px;
       font-size: 12px;
       line-height: 14px;

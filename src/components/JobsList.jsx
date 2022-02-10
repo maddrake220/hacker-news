@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import SearchedContainer from "../containers/SearchedContainer";
 import useSearch from "../hooks/useSearch";
+import { TYPE_JOBS } from "../utils/constants";
 import JobsRecent from "./JobsRecent";
 import Pagination from "./Pagination";
 import Search from "./Search";
@@ -9,7 +11,15 @@ import UserInfoButton from "./UserInfoButton";
 
 const JobsList = ({ loading, pages, list, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
+  const [
+    search,
+    prevSearch,
+    setSearch,
+    isSearchOn,
+    onOpenHandler,
+    onCloseHandler,
+    onSearchingHandler,
+  ] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
@@ -18,7 +28,12 @@ const JobsList = ({ loading, pages, list, getData }) => {
   return (
     <>
       {isSearchOn ? (
-        <Search onCloseHandler={onCloseHandler} />
+        <Search
+          onCloseHandler={onCloseHandler}
+          search={search}
+          setSearch={setSearch}
+          onSearchingHandler={onSearchingHandler}
+        />
       ) : (
         <StyledJobsList>
           <header>
@@ -28,14 +43,20 @@ const JobsList = ({ loading, pages, list, getData }) => {
               <UserInfoButton />
             </div>
           </header>
-          <main>
-            <JobsRecent loading={loading} list={list} />
-            <Pagination
-              currentPage={currentPage}
-              pages={pages}
-              paginate={paginate}
-            />
-          </main>
+          {prevSearch !== "" ? (
+            <div className="search-result-text">
+              <SearchedContainer type={TYPE_JOBS} search={prevSearch} />
+            </div>
+          ) : (
+            <main>
+              <JobsRecent loading={loading} list={list} />
+              <Pagination
+                currentPage={currentPage}
+                pages={pages}
+                paginate={paginate}
+              />
+            </main>
+          )}
         </StyledJobsList>
       )}
     </>

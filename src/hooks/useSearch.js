@@ -3,6 +3,12 @@ import { useState } from "react";
 
 const useSearch = () => {
   const [isSearchOn, setIsSearchOn] = useState(false);
+  const [prevSearch, setPrevSearch] = useState("");
+  const [search, setSearch] = useState("");
+  const onSearchingHandler = useCallback(() => {
+    setPrevSearch(search);
+    setIsSearchOn(false);
+  }, [search]);
   const onOpenHandler = useCallback(() => {
     setIsSearchOn(true);
   }, []);
@@ -10,6 +16,14 @@ const useSearch = () => {
     setIsSearchOn(false);
   }, []);
 
-  return [isSearchOn, onOpenHandler, onCloseHandler];
+  return [
+    search,
+    prevSearch,
+    setSearch,
+    isSearchOn,
+    onOpenHandler,
+    onCloseHandler,
+    onSearchingHandler,
+  ];
 };
 export default useSearch;

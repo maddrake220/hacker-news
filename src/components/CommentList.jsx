@@ -25,19 +25,11 @@ const CommentList = ({ comments, loading }) => {
 
 const StyledCommentList = styled.div`
   margin-top: 27px;
-  height: 600px;
   position: relative;
   display: flex;
   align-items: center;
-
-  overflow-y: scroll;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   flex-direction: column;
-  ::-webkit-scrollbar {
-    display: none;
-  }
+
   color: #fff;
 `;
 export default CommentList;

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import SearchedContainer from "../containers/SearchedContainer";
 import useSearch from "../hooks/useSearch";
+import { TYPE_ASK } from "../utils/constants";
 import AskRecent from "./AskRecent";
 import AskTrending from "./AskTrending";
 import Search from "./Search";
@@ -16,7 +18,15 @@ const AskList = ({
   trendingList,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [isSearchOn, onOpenHandler, onCloseHandler] = useSearch();
+  const [
+    search,
+    prevSearch,
+    setSearch,
+    isSearchOn,
+    onOpenHandler,
+    onCloseHandler,
+    onSearchingHandler,
+  ] = useSearch();
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
   useEffect(() => {
     getData(currentPage);
@@ -28,7 +38,12 @@ const AskList = ({
   return (
     <>
       {isSearchOn ? (
-        <Search onCloseHandler={onCloseHandler} />
+        <Search
+          onCloseHandler={onCloseHandler}
+          search={search}
+          setSearch={setSearch}
+          onSearchingHandler={onSearchingHandler}
+        />
       ) : (
         <StyledAskList>
           <header>
@@ -38,21 +53,27 @@ const AskList = ({
               <UserInfoButton />
             </div>
           </header>
-          <main>
-            <div className="ask-trending">
-              {trendingList.map((item) => (
-                <AskTrending item={item} />
-              ))}
+          {prevSearch !== "" ? (
+            <div className="search-result-text">
+              <SearchedContainer type={TYPE_ASK} search={prevSearch} />
             </div>
+          ) : (
+            <main>
+              <div className="ask-trending">
+                {trendingList.map((item) => (
+                  <AskTrending item={item} />
+                ))}
+              </div>
 
-            <AskRecent
-              loading={loading}
-              list={list}
-              pages={pages}
-              paginate={paginate}
-              currentPage={currentPage}
-            />
-          </main>
+              <AskRecent
+                loading={loading}
+                list={list}
+                pages={pages}
+                paginate={paginate}
+                currentPage={currentPage}
+              />
+            </main>
+          )}
         </StyledAskList>
       )}
     </>

@@ -1,14 +1,24 @@
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import styled from "styled-components";
 import XIcon from "../assets/x-icon.png";
 import { SearchHistory } from "../utils/datas";
 import SearchIcon from "../assets/SearchIcon.png";
 import ArrowIcon from "../assets/backarrow-icon.png";
-const Search = ({ onCloseHandler }) => {
-  const [search, setSearch] = useState("");
-  const onChangeHandler = useCallback((e) => {
-    setSearch(e.target.value);
-  }, []);
+const Search = ({ onCloseHandler, search, setSearch, onSearchingHandler }) => {
+  const onChangeHandler = useCallback(
+    (e) => {
+      setSearch(e.target.value);
+    },
+    [setSearch]
+  );
+  const onKeyDownHandler = useCallback(
+    (e) => {
+      if (e.key === "Enter") {
+        onSearchingHandler();
+      }
+    },
+    [onSearchingHandler]
+  );
   return (
     <StyledSearch>
       <img
@@ -18,18 +28,31 @@ const Search = ({ onCloseHandler }) => {
         onClick={onCloseHandler}
       />
       <div className="search-input-wrap">
-        <img className="backarrow-icon" src={ArrowIcon} alt="" />
-        <img className="search-icon" src={SearchIcon} alt="" />
+        <img
+          className="backarrow-icon"
+          src={ArrowIcon}
+          alt=""
+          onClick={() => setSearch("")}
+        />
+        <img
+          className="search-icon"
+          src={SearchIcon}
+          alt=""
+          onClick={onSearchingHandler}
+        />
         <input
           className="search-input"
           placeholder="Search"
           value={search}
           onChange={onChangeHandler}
+          onKeyDown={onKeyDownHandler}
         />
       </div>
-      <div className="search-history">
+      <div className="search-recommend">
         {SearchHistory.map((v) => (
-          <div className="history">{v.text}</div>
+          <div className="recommend" onClick={() => setSearch(v.text)}>
+            {v.text}
+          </div>
         ))}
       </div>
       <div className="search-tip">
@@ -63,13 +86,14 @@ const StyledSearch = styled.div`
       right: 23px;
       cursor: pointer;
   }
-  .search-history {
+  .search-recommend {
       margin-top: 20px;
       margin-left: 25px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      .history {
+      .recommend {
+          cursor: pointer;
           font-weight: 300;
           font-size: 14px;
           line-height: 17px;
@@ -96,6 +120,7 @@ const StyledSearch = styled.div`
             letter-spacing: -0.02em;
       }
         .search-icon {
+            cursor: pointer;
             position: absolute;
             top: 0;
             bottom: 0;
@@ -103,6 +128,7 @@ const StyledSearch = styled.div`
             margin: auto 0;
         }
          .backarrow-icon {
+            cursor: pointer;
             position: absolute;
             top: 0;
             bottom: 0;

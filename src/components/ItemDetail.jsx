@@ -27,7 +27,6 @@ const ItemDetail = ({ id, data, loading, getData }) => {
 };
 
 const StyledItemDetail = styled.section`
-  width: 390px;
   display: flex;
   align-items: center;
   flex-direction: column;

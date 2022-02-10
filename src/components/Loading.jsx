@@ -18,10 +18,10 @@ export default Loading;
 
 const StyledLoading = styled.div`
   font-size: 3px;
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 100px;
   bottom: 0;
-  margin: auto 0;
+  left: 47%;
   text-indent: -9999em;
   width: 11em;
   height: 11em;
