@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { substract } from "../utils/DateCalculation";
-import ClockIcon from "../assets/icon-time.png";
 import ArticleScoreBar from "./ArticleScoreBar";
 import CommentInfo from "./CommentInfo";
+import TimeInfo from "./TimeInfo";
 import UserInfoModal from "./UserInfoModal";
 const Trending = ({ item }) => {
   const {
@@ -28,8 +28,7 @@ const Trending = ({ item }) => {
             <UserInfoModal by={by} />
           </div>
           <div>
-            <img src={ClockIcon} alt="" />
-            <span>{diff}</span>
+            <TimeInfo diff={diff} />
           </div>
         </div>
         <div className="comments">

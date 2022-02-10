@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Arrow_Icon from "../assets/VectorArrow.png";
 import { useRef } from "react";
 const Pagination = ({ currentPage, pages, paginate }) => {
   const swiperRef = useRef(null);
@@ -9,15 +8,26 @@ const Pagination = ({ currentPage, pages, paginate }) => {
   const nextRef = useRef(null);
   return (
     <StyledPagination>
-      <img
+      <svg
         ref={prevRef}
         onClick={() => {
           swiperRef.current.swiper.slidePrev();
         }}
         className={`swiper-button-prev`}
-        src={Arrow_Icon}
-        alt=""
-      />
+        width="9"
+        height="16"
+        viewBox="0 0 9 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0.571068 15.1421L7.64214 8.07104L0.571068 0.999977"
+          stroke="white"
+          stroke-opacity="0.52"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
       <Swiper
         onSwiper={() => prevRef.current.classList.add("swiper-button-disabled")}
         onSlideChange={(swiper) => {
@@ -49,15 +59,26 @@ const Pagination = ({ currentPage, pages, paginate }) => {
             </SwiperSlide>
           ))}
       </Swiper>
-      <img
+      <svg
         ref={nextRef}
         onClick={() => {
           swiperRef.current.swiper.slideNext();
         }}
         className="swiper-button-next"
-        src={Arrow_Icon}
-        alt=""
-      />
+        width="9"
+        height="16"
+        viewBox="0 0 9 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0.571068 15.1421L7.64214 8.07104L0.571068 0.999977"
+          stroke="white"
+          stroke-opacity="0.52"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
     </StyledPagination>
   );
 };

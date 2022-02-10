@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import ArticleScoreBar from "./ArticleScoreBar";
 import { substract } from "../utils/DateCalculation";
-import TimeIcon from "../assets/icon-time.png";
 import CommentInfo from "./CommentInfo";
 import UserInfoModal from "./UserInfoModal";
+import TimeInfo from "./TimeInfo";
 const NewStory = ({ story }) => {
   const {
     data: { id, title, score, by, time, url, descendants },
@@ -26,8 +26,7 @@ const NewStory = ({ story }) => {
           <UserInfoModal by={by} />
         </div>
         <div className="story-time">
-          <img src={TimeIcon} alt="" />
-          <span>{diff}</span>
+          <TimeInfo diff={diff} />
         </div>
         <div className="story-comment">
           <CommentInfo

@@ -2,7 +2,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { substract } from "../utils/DateCalculation";
 import TimeInfo from "./TimeInfo";
-import UpDownIcon from "../assets/UpDownArrow.png";
 import Loading from "./Loading";
 import UserInfoModal from "./UserInfoModal";
 const Comment = ({ isloading, comment, dth }) => {
@@ -30,12 +29,21 @@ const Comment = ({ isloading, comment, dth }) => {
               <div className="comment-time">
                 <TimeInfo diff={diff} />
               </div>
-              <img
+              <svg
                 className={`toggle-arrow ${toggle && "toggled"}`}
-                src={UpDownIcon}
-                alt=""
                 onClick={toggleHandler}
-              />
+                width="8"
+                height="5"
+                viewBox="0 0 8 5"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M0.70999 1.71L3.29999 4.3C3.68999 4.69 4.31999 4.69 4.70999 4.3L7.29999 1.71C7.92999 1.08 7.47999 0 6.58999 0H1.40999C0.51999 0 0.0799904 1.08 0.70999 1.71Z"
+                  fill="white"
+                  fill-opacity="0.56"
+                />
+              </svg>
             </div>
           </div>
           <div
@@ -59,6 +67,7 @@ const StyledComment = styled.article`
   font-style: normal;
   display: flex;
   padding-bottom: 16px;
+  width: 410px;
   + .reply-comment {
     display: ${(props) => props.toggle && "none"};
   }

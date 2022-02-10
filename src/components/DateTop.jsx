@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import TIME_ICON from "../assets/Main1stTimeIcon.png";
 import { substract } from "../utils/DateCalculation";
 import ScoreBar from "./ScoreBar";
 import CommentInfo from "./CommentInfo";
 import UserInfoModal from "./UserInfoModal";
+import TimeInfo from "./TimeInfo";
 
 const DateTop = ({ story, ranking }) => {
   const { id, title, score, url, by, time, descendants } = story;
-  const diffTime = substract(time);
+  const diff = substract(time);
 
   return (
     <StyledDateTop dir="ltr">
@@ -28,8 +28,7 @@ const DateTop = ({ story, ranking }) => {
       <div className="date-top-info">
         <UserInfoModal by={by} />
         <div>
-          <img src={TIME_ICON} alt="time"></img>
-          <span>{diffTime}</span>
+          <TimeInfo diff={diff} />
         </div>
         <div className="story-comment">
           <CommentInfo id={id} descendants={descendants} />

@@ -30,7 +30,6 @@ const StyledItemDetail = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   > header {
     font-family: "Pretendard Variable";
     font-style: normal;

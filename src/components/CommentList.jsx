@@ -29,7 +29,6 @@ const StyledCommentList = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-
   color: #fff;
 `;
 export default CommentList;

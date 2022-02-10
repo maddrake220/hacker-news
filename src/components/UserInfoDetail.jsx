@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { GetUserFetcher } from "../hooks/DataFetcher";
 import { TYPE_USER } from "../utils/constants";
 import { substract } from "../utils/DateCalculation";
-import X_ICON from "../assets/x-icon.png";
 const UserInfoDetail = ({ by, closeModal }) => {
   const [user, isLoading] = GetUserFetcher(by);
   return (
@@ -13,12 +12,21 @@ const UserInfoDetail = ({ by, closeModal }) => {
         <>
           <header>
             <h4>User Information</h4>
-            <img
+            <svg
               className="close-button"
-              src={X_ICON}
-              alt=""
               onClick={closeModal}
-            />
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 21L21 1M21 21L1 1"
+                stroke="#C4C4C4"
+                stroke-opacity="0.52"
+              />
+            </svg>
           </header>
           <div className="user-icon">
             <span>USER</span>
