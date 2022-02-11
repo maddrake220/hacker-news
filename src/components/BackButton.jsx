@@ -1,6 +1,5 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 const BackButton = () => {
   const navigate = useNavigate();
   const onClickHandler = useCallback(() => {
@@ -31,5 +30,3 @@ const BackButton = () => {
 };
 
 export default BackButton;
-
-const StyledBackButton = styled.img``;

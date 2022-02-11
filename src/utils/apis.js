@@ -15,7 +15,7 @@ export const getComments = async (id) => {
     const comments = axios.all(story?.data?.kids?.map(getStory));
     return comments;
   } catch (error) {
-    console.log(error, "Error while getting a story");
+    console.log(error, "Error while getting comments");
   }
 };
 
@@ -31,7 +31,7 @@ export const getStories = async (type, start, end) => {
     const { data: storyIds } = await axios.get(
       `${BASE_API_URL}/${type}stories.json`
     );
-    const stories = await Promise.all(storyIds.slice(start, end).map(getStory));
+    const stories = await axios.all(storyIds.slice(start, end).map(getStory));
     return stories;
   } catch (error) {
     console.log(error, "Error while getting stories");

@@ -6,12 +6,12 @@ import DateTopDay from "./DateTopDay";
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import DateTop from "./DateTop";
+import UserInfoModal from "./UserInfoModal";
 const TopList = ({ loading, list, getData }) => {
   const [slideState, setSlideState] = useState(0);
   useEffect(() => {
     getData();
   }, [getData]);
-  //list.forEach((v) => v[1].sort((a, b) => b.score - a.score));
   return (
     <StyledTopList>
       <header>
@@ -61,27 +61,9 @@ const TopList = ({ loading, list, getData }) => {
             </clipPath>
           </defs>
         </svg>
-        <svg
-          className="useravatar"
-          width="21"
-          height="21"
-          viewBox="0 0 21 21"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M10.4381 10.1281C12.279 10.1281 13.7714 8.63571 13.7714 6.79476C13.7714 4.95381 12.279 3.46143 10.4381 3.46143C8.59712 3.46143 7.10474 4.95381 7.10474 6.79476C7.10474 8.63571 8.59712 10.1281 10.4381 10.1281Z"
-            stroke="white"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M3.77124 18.4614V15.1281C3.77124 14.2076 4.51743 13.4614 5.43791 13.4614H15.4379C16.3584 13.4614 17.1046 14.2076 17.1046 15.1281V18.4614"
-            stroke="white"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
+        <div className="useravatar">
+          <UserInfoModal by={1234} isOwnUser={true} from="home" />
+        </div>
       </header>
 
       <SearchInput />
@@ -157,8 +139,7 @@ const StyledTopList = styled.section`
     }
     .useravatar {
       position: absolute;
-      top: 49px;
-      right: 28.56px;
+      right: 18.56px;
     }
   }
 `;

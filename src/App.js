@@ -6,6 +6,7 @@ import Jobs from "./pages/Jobs";
 import Show from "./pages/Show";
 import "./App.css";
 import Item from "./pages/Item";
+import NotFound from "./pages/NotFound";
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,7 @@ function App() {
           <Route path="item">
             <Route path=":id" element={<Item />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>

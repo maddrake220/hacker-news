@@ -11,7 +11,9 @@ const SearchedList = ({ loading, list, search, getData }) => {
     getData();
   }, [getData]);
   useEffect(() => {
-    const filteredList = list.filter((value) => isSearch(value.data, search));
+    const filteredList = list.filter((value) =>
+      isSearch(value.data.title, search)
+    );
     setFilteredList(filteredList);
   }, [list, search]);
   return (

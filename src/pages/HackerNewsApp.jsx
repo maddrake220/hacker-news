@@ -7,6 +7,7 @@ import Top from "./Top";
 import styled from "styled-components";
 import Navigation from "../components/Navigation";
 import Item from "./Item";
+import NotFound from "./NotFound";
 const HackerNewsApp = () => {
   const { pathname } = useLocation();
   return (
@@ -15,12 +16,21 @@ const HackerNewsApp = () => {
         <h1>HackerNews</h1>
       </header>
       <section>
-        {pathname === "/" && <Top />}
-        {pathname === "/article" && <Article />}
-        {pathname === "/ask" && <Ask />}
-        {pathname === "/jobs" && <Jobs />}
-        {pathname === "/show" && <Show />}
-        {pathname.slice(0, 5) === "/item" && <Item />}
+        {pathname === "/" ? (
+          <Top />
+        ) : pathname === "/article" ? (
+          <Article />
+        ) : pathname === "/ask" ? (
+          <Ask />
+        ) : pathname === "/jobs" ? (
+          <Jobs />
+        ) : pathname === "/show" ? (
+          <Show />
+        ) : pathname.slice(0, 5) === "/item" ? (
+          <Item />
+        ) : (
+          <NotFound />
+        )}
       </section>
       <footer>
         <Navigation />
