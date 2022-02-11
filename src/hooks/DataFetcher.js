@@ -24,6 +24,7 @@ export const GetCommentsFetcher = (id) => {
 export const GetUserFetcher = (id) => {
   const [user, setUser] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
   useEffect(() => {
     setIsLoading(true);
     getUser(id)
@@ -31,10 +32,11 @@ export const GetUserFetcher = (id) => {
         setUser(v);
         setIsLoading(false);
       })
-      .catch(() => {
+      .catch((e) => {
+        setError(e);
         setIsLoading(false);
       });
     return () => setIsLoading(false);
   }, [id]);
-  return [user, isLoading];
+  return [user, isLoading, error];
 };

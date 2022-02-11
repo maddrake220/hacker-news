@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { GetUserFetcher } from "../hooks/DataFetcher";
 import { TYPE_USER } from "../utils/constants";
 import { substract } from "../utils/DateCalculation";
+import ErrorMessage from "./ErrorMessage";
 const UserInfoDetail = ({ by, closeModal }) => {
-  const [user, isLoading] = GetUserFetcher(by);
+  const [user, isLoading, error] = GetUserFetcher(by);
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <StyledUserInfoDetail>
       {isLoading ? (
