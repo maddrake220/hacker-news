@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { JOBS_PAGE_PER_VIEW, TYPE_JOBS } from "../utils/constants";
 const JobsContainer = () => {
-  const { data, pages, loading } = useSelector((state) => state.jobs);
+  const { data, error, pages, loading } = useSelector((state) => state.jobs);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -25,7 +25,13 @@ const JobsContainer = () => {
     [dispatch]
   );
   return (
-    <JobsList loading={loading} pages={pages} list={data} getData={getData} />
+    <JobsList
+      error={error}
+      loading={loading}
+      pages={pages}
+      list={data}
+      getData={getData}
+    />
   );
 };
 

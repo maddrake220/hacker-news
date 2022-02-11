@@ -9,7 +9,9 @@ import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { PAGE_PER_VIEW, TYPE_ASK } from "../utils/constants";
 const AskContainer = () => {
-  const { data, pages, loading, trending } = useSelector((state) => state.ask);
+  const { data, error, pages, loading, trending } = useSelector(
+    (state) => state.ask
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +34,7 @@ const AskContainer = () => {
   );
   return (
     <AskList
+      error={error}
       loading={loading}
       pages={pages}
       list={data}

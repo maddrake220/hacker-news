@@ -9,8 +9,10 @@ import UserInfoButton from "./UserInfoButton";
 import useSearch from "../hooks/useSearch";
 import SearchedContainer from "../containers/SearchedContainer";
 import { TYPE_NEW } from "../utils/constants";
+import ErrorMessage from "./ErrorMessage";
 
 const ArticleList = ({
+  error,
   loading,
   pages,
   list,
@@ -36,6 +38,9 @@ const ArticleList = ({
   useEffect(() => {
     getDataTrending();
   }, [getDataTrending]);
+  if (error !== null) {
+    return <ErrorMessage message={error} />;
+  }
   return (
     <>
       {isSearchOn ? (

@@ -9,7 +9,9 @@ import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { PAGE_PER_VIEW, TYPE_NEW } from "../utils/constants";
 const ArticleContainer = () => {
-  const { data, pages, loading, trending } = useSelector((state) => state.news);
+  const { data, error, pages, loading, trending } = useSelector(
+    (state) => state.news
+  );
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -32,6 +34,7 @@ const ArticleContainer = () => {
   );
   return (
     <ArticleList
+      error={error}
       loading={loading}
       pages={pages}
       list={data}

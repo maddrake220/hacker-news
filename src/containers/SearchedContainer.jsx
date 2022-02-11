@@ -6,7 +6,7 @@ import { getStoriesThunk } from "../redux/actions";
 import { TYPE_ASK, TYPE_JOBS, TYPE_NEW, TYPE_SHOW } from "../utils/constants";
 
 const SearchedContainer = ({ type, search }) => {
-  const { loading, data } = useSelector((state) => {
+  const { loading, error, data } = useSelector((state) => {
     switch (type) {
       case TYPE_NEW:
         return state.news;
@@ -26,6 +26,7 @@ const SearchedContainer = ({ type, search }) => {
   }, [dispatch, type]);
   return (
     <SearchedList
+      error={error}
       loading={loading}
       list={data}
       search={search}

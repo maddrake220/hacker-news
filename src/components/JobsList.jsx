@@ -3,13 +3,14 @@ import styled from "styled-components";
 import SearchedContainer from "../containers/SearchedContainer";
 import useSearch from "../hooks/useSearch";
 import { TYPE_JOBS } from "../utils/constants";
+import ErrorMessage from "./ErrorMessage";
 import JobsRecent from "./JobsRecent";
 import Pagination from "./Pagination";
 import Search from "./Search";
 import SearchButton from "./SearchButton";
 import UserInfoButton from "./UserInfoButton";
 
-const JobsList = ({ loading, pages, list, getData }) => {
+const JobsList = ({ error, loading, pages, list, getData }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [
     search,
@@ -24,7 +25,7 @@ const JobsList = ({ loading, pages, list, getData }) => {
   useEffect(() => {
     getData(currentPage);
   }, [getData, currentPage]);
-
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <>
       {isSearchOn ? (

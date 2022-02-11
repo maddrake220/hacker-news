@@ -7,11 +7,13 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import DateTop from "./DateTop";
 import UserInfoModal from "./UserInfoModal";
-const TopList = ({ loading, list, getData }) => {
+import ErrorMessage from "./ErrorMessage";
+const TopList = ({ error, loading, list, getData }) => {
   const [slideState, setSlideState] = useState(0);
   useEffect(() => {
     getData();
   }, [getData]);
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <StyledTopList>
       <header>

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import Comment from "./Comment";
+import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
 import ReplyComment from "./ReplyComment";
 
-const CommentList = ({ comments, loading }) => {
+const CommentList = ({ comments, loading, error }) => {
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <StyledCommentList>
       {loading ? (

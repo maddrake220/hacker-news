@@ -5,11 +5,13 @@ import useSearch from "../hooks/useSearch";
 import { TYPE_ASK } from "../utils/constants";
 import AskRecent from "./AskRecent";
 import AskTrending from "./AskTrending";
+import ErrorMessage from "./ErrorMessage";
 import Search from "./Search";
 import SearchButton from "./SearchButton";
 import UserInfoButton from "./UserInfoButton";
 
 const AskList = ({
+  error,
   loading,
   pages,
   list,
@@ -35,6 +37,9 @@ const AskList = ({
   useEffect(() => {
     getDataTrending();
   }, [getDataTrending]);
+  if (error !== null) {
+    return <ErrorMessage message={error} />;
+  }
   return (
     <>
       {isSearchOn ? (

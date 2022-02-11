@@ -9,7 +9,7 @@ import { useCallback, useEffect } from "react";
 import { PAGE_PER_VIEW, TYPE_SHOW } from "../utils/constants";
 import ShowList from "../components/ShowList";
 const ShowContainer = () => {
-  const { data, pages, loading, trending } = useSelector(
+  const { data, error, pages, loading, trending } = useSelector(
     (state) => state.shows
   );
   const dispatch = useDispatch();
@@ -33,6 +33,7 @@ const ShowContainer = () => {
   );
   return (
     <ShowList
+      error={error}
       loading={loading}
       pages={pages}
       list={data}

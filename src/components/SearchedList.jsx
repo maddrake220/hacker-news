@@ -2,10 +2,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import styled from "styled-components";
 import { isSearch } from "../utils/search";
+import ErrorMessage from "./ErrorMessage";
 import Loading from "./Loading";
 import Searched from "./Searched";
 
-const SearchedList = ({ loading, list, search, getData }) => {
+const SearchedList = ({ error, loading, list, search, getData }) => {
   const [filteredList, setFilteredList] = useState([]);
   useEffect(() => {
     getData();
@@ -16,6 +17,7 @@ const SearchedList = ({ loading, list, search, getData }) => {
     );
     setFilteredList(filteredList);
   }, [list, search]);
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <StyledSearchedList>
       {loading ? (

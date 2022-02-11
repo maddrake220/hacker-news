@@ -9,7 +9,9 @@ import UserInfoButton from "./UserInfoButton";
 import Search from "./Search";
 import SearchedContainer from "../containers/SearchedContainer";
 import { TYPE_SHOW } from "../utils/constants";
+import ErrorMessage from "./ErrorMessage";
 const ShowList = ({
+  error,
   loading,
   pages,
   list,
@@ -35,6 +37,7 @@ const ShowList = ({
   useEffect(() => {
     getDataTrending();
   }, [getDataTrending]);
+  if (error !== null) return <ErrorMessage message={error} />;
   return (
     <>
       {isSearchOn ? (

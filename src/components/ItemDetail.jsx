@@ -3,14 +3,16 @@ import styled from "styled-components";
 import { GetCommentsFetcher } from "../hooks/DataFetcher";
 import BackButton from "./BackButton";
 import CommentList from "./CommentList";
+import ErrorMessage from "./ErrorMessage";
 import Item from "./Item";
 import NewButton from "./NewButton";
 
-const ItemDetail = ({ id, data, loading, getData }) => {
+const ItemDetail = ({ errors, id, data, loading, getData }) => {
   useEffect(() => {
     getData();
   }, [getData]);
-  const [comments, isLoading] = GetCommentsFetcher(id);
+  const [comments, isLoading, error] = GetCommentsFetcher(id);
+  if (errors !== null) return <ErrorMessage message={errors} />;
   return (
     <StyledItemDetail>
       <header>
@@ -21,7 +23,9 @@ const ItemDetail = ({ id, data, loading, getData }) => {
         <h2>Comments</h2>
       </header>
       {data.data && <Item item={data} loading={loading} />}
-      {comments && <CommentList comments={comments} loading={isLoading} />}
+      {comments && (
+        <CommentList comments={comments} loading={isLoading} error={error} />
+      )}
     </StyledItemDetail>
   );
 };
