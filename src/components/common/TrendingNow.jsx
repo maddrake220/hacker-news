@@ -4,7 +4,6 @@ import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import Loading from "./Loading";
 const TrendingNow = ({ loading, trendingList }) => {
   return (
     <StyledTrendingNow>

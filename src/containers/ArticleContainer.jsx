@@ -3,8 +3,7 @@ import { getStoriesIdsThunk, getStoriesTrendingThunk } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
-import { PAGE_PER_VIEW, TYPE_NEW } from "../utils/constants";
-import { GetStoriesFetcher } from "../hooks/DataFetcher";
+import { TYPE_NEW } from "../utils/constants";
 const ArticleContainer = () => {
   const { data, error, pages, loading, trending } = useSelector(
     (state) => state.news

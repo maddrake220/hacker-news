@@ -29,7 +29,7 @@ const ArticleList = ({
     onCloseHandler,
     onSearchingHandler,
   ] = useSearch();
-  const [stories, isLoading, isError] = GetStoriesFetcher(
+  const [stories, isLoading] = GetStoriesFetcher(
     TYPE_NEW,
     (currentPage - 1) * PAGE_PER_VIEW,
     (currentPage - 1) * PAGE_PER_VIEW + PAGE_PER_VIEW
