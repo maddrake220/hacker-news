@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import ItemDetail from "../components/ItemDetail";
+import ItemDetail from "../components/Item/ItemDetail";
 import { getStoryThunk } from "../redux/actions";
 
 const ItemContainer = ({ id }) => {

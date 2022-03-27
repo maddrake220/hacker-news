@@ -1,4 +1,4 @@
-import AskList from "../components/AskList";
+import AskList from "../components/Ask/AskList";
 import {
   getStoriesIdsThunk,
   getStoriesThunk,

@@ -26,6 +26,17 @@ export const getUser = async (id) => {
   } catch (error) {}
 };
 
+export const getStoryTypeIds = async (type, start, end) => {
+  try {
+    const { data: storyIds } = await axios.get(
+      `${BASE_API_URL}/${type}stories.json`
+    );
+    return storyIds.slice(start, end);
+  } catch (error) {
+    console.log(error, "Error while getting stories");
+  }
+};
+
 export const getStories = async (type, start, end) => {
   try {
     const { data: storyIds } = await axios.get(

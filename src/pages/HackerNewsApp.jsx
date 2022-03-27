@@ -5,7 +5,7 @@ import Jobs from "./Jobs";
 import Show from "./Show";
 import Top from "./Top";
 import styled from "styled-components";
-import Navigation from "../components/Navigation";
+import Navigation from "../components/common/Navigation";
 import Item from "./Item";
 import NotFound from "./NotFound";
 const HackerNewsApp = () => {
@@ -44,20 +44,21 @@ export default HackerNewsApp;
 const StyledHackerNewsApp = styled.section`
   width: 100vw;
 
-  @media screen and (max-width: 1799px) {
-    /* 데스크탑 */
+  @media screen and (max-width: 599px) {
+    /* 모바일 세로 */
+  }
+
+  @media screen and (max-width: 899px) {
+    /* 모바일 가로, 타블렛 세로 */
   }
 
   @media screen and (max-width: 1199px) {
     /* 타블렛 가로 */
   }
-  @media screen and (max-width: 899px) {
-    /* 모바일 가로, 타블렛 세로 */
+  @media screen and (max-width: 1799px) {
+    /* 데스크탑 */
   }
 
-  @media screen and (max-width: 599px) {
-    /* 모바일 세로 */
-  }
   min-height: 100vh;
   position: relative;
   background-color: #121212;

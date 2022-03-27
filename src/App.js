@@ -7,6 +7,7 @@ import Show from "./pages/Show";
 import "./App.css";
 import Item from "./pages/Item";
 import NotFound from "./pages/NotFound";
+import Map from "./pages/Map";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,8 @@ function App() {
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
+
+        <Route path="/map" element={<Map />} />
       </Routes>
     </BrowserRouter>
   );

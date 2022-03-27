@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import SearchedList from "../components/SearchedList";
+import SearchedList from "../components/common/SearchedList";
 import { getStoriesThunk } from "../redux/actions";
 import { TYPE_ASK, TYPE_JOBS, TYPE_NEW, TYPE_SHOW } from "../utils/constants";
 

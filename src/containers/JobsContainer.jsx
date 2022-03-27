@@ -1,4 +1,4 @@
-import JobsList from "../components/JobsList";
+import JobsList from "../components/Jobs/JobsList";
 import { getStoriesIdsThunk, getStoriesThunk } from "../redux/actions";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";

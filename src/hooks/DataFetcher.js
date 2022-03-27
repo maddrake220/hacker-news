@@ -1,5 +1,45 @@
 import { useEffect, useState } from "react";
-import { getComments, getUser } from "../utils/apis";
+import { getComments, getStory, getStoryTypeIds, getUser } from "../utils/apis";
+
+export const GetStoryFetcher = (id) => {
+  const [story, setStory] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(null);
+  useEffect(() => {
+    setIsLoading(true);
+    getStory(id)
+      .then((v) => {
+        setStory(v);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        setIsError(e);
+        setIsLoading(false);
+      });
+    return () => setIsLoading(false);
+  }, [id]);
+  return [story, isLoading, isError];
+};
+
+export const GetStoriesFetcher = (type, start, end) => {
+  const [stories, setStories] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(null);
+  useEffect(() => {
+    setIsLoading(true);
+    getStoryTypeIds(type, start, end)
+      .then((v) => {
+        setStories(v);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        setIsError(e);
+        setIsLoading(false);
+      });
+    return () => setIsLoading(false);
+  }, [type, start, end]);
+  return [stories, isLoading, isError];
+};
 
 export const GetCommentsFetcher = (id) => {
   const [comments, setComments] = useState([]);

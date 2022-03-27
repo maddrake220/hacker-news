@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useCallback, useEffect } from "react";
 import { PAGE_PER_VIEW, TYPE_SHOW } from "../utils/constants";
-import ShowList from "../components/ShowList";
+import ShowList from "../components/Show/ShowList";
 const ShowContainer = () => {
   const { data, error, pages, loading, trending } = useSelector(
     (state) => state.shows
