@@ -1,7 +1,7 @@
 import styled from "styled-components";
-const Loading = () => {
+const Loading = ({ style }) => {
   return (
-    <StyledLoading>
+    <StyledLoading style={style}>
       <div></div>
       <div></div>
       <div></div>
@@ -19,7 +19,7 @@ export default Loading;
 const StyledLoading = styled.div`
   font-size: 3px;
   position: absolute;
-  top: 100px;
+  top: calc(100vh - 50%);
   bottom: 0;
   left: 47%;
   text-indent: -9999em;

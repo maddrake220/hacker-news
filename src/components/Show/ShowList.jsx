@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import useSearch from "../../hooks/useSearch";
 import Pagination from "../common/Pagination";
-import Recent from "../common/Recent";
+import AskRecent from "../Ask/AskRecent";
 import SearchButton from "../common/SearchButton";
-import TrendingNow from "../common/TrendingNow";
 import UserInfoButton from "../common/UserInfoButton";
 import Search from "../common/Search";
 import SearchedContainer from "../../containers/SearchedContainer";
 import { TYPE_SHOW } from "../../utils/constants";
 import ErrorMessage from "../common/ErrorMessage";
+import AskTrending from "../Ask/AskTrending";
 const ShowList = ({
   error,
   loading,
@@ -62,11 +62,13 @@ const ShowList = ({
             </div>
           ) : (
             <main>
-              <TrendingNow trendingList={trendingList} />
+              {trendingList.slice(0, 2).map((item) => (
+                <AskTrending item={item} />
+              ))}
               <div className="horizontal-bar">
                 <div></div>
               </div>
-              <Recent loading={loading} list={list} />
+              <AskRecent loading={loading} list={list} />
               <Pagination
                 currentPage={currentPage}
                 pages={pages}
